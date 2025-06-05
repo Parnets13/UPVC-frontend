@@ -74,7 +74,7 @@ const BuyerForm = () => {
                   value={formData.windowType}
                   onChange={handleChange}
                   className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all"
-                  required
+                   
                 >
                   <option value="">Select type</option>
                   <option value="casement">Casement Windows</option>
@@ -94,7 +94,7 @@ const BuyerForm = () => {
                   onChange={handleChange}
                   placeholder="e.g. 15"
                   className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all"
-                  required
+                   
                 />
               </div>
               <div>
@@ -104,7 +104,7 @@ const BuyerForm = () => {
                   value={formData.budget}
                   onChange={handleChange}
                   className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all"
-                  required
+                   
                 >
                   <option value="">Select budget range</option>
                   <option value="10-20k">₹10,000 - ₹20,000</option>
@@ -124,7 +124,7 @@ const BuyerForm = () => {
                   onChange={handleChange}
                   placeholder="Enter 6-digit pin code"
                   className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all"
-                  required
+                   
                 />
               </div>
             </div>
@@ -159,7 +159,7 @@ const BuyerForm = () => {
                 value={formData.deliveryTime}
                 onChange={handleChange}
                 className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all"
-                required
+                 
               >
                 <option value="">Select timeframe</option>
                 <option value="urgent">Within 1 week</option>
@@ -178,7 +178,7 @@ const BuyerForm = () => {
                   onChange={handleChange}
                   placeholder="Your name"
                   className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all"
-                  required
+                   
                 />
               </div>
 
@@ -191,7 +191,7 @@ const BuyerForm = () => {
                   onChange={handleChange}
                   placeholder="10-digit mobile number"
                   className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all"
-                  required
+                   
                 />
               </div>
             </div>
