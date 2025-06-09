@@ -56,12 +56,13 @@ const WindowPrice = () => {
 
   return (
     <div className="bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 ">
         {/* Hero Section */}
-        <section className="mb-16 text-center">
-          <h1 className="text-3xl font-medium text-black tracking-tight mb-4">
-            PRICE - KNOW IT ALL
-          </h1>
+        <section className="mb-8 text-center"> 
+           <h3 className="text-3xl font-light  tracking-tight text-black sm:text-4xl">
+            Price <span className="font-medium"> - Know it All</span>
+          </h3>
+          <div className="mt-2 h-0.5 w-20 mb-2 bg-black mx-auto"></div>
           <p className="text-gray-600 text-lg">
             The cost is the entry fee, the value is the experience!
           </p>
