@@ -11,7 +11,7 @@ const TheProcess = () => {
   ]
 
   return (
-    <div className="  px-4 sm:px-6 lg:px-8 bg-white">
+    <div className="  px-4 mt-24 sm:px-6 lg:px-8 bg-white">
       <div className="max-w-4xl mx-auto">
         <div className="text-center mb-16">
           <h3 className="text-3xl font-light tracking-tight text-black sm:text-4xl">

@@ -168,7 +168,7 @@ const WindowOptions = () => {
   };
 
   return (
-    <div className="min-h-screen bg-white ">
+    <div className="min-h-screen bg-white mt-24 ">
       <div className="max-w-7xl mx-auto">
         <div className="flex flex-col justify-center items-center">
           {/* <h3 className="text-3xl font-medium text-black mb-4">
@@ -270,7 +270,7 @@ const WindowOptions = () => {
                   </div>
                 </div>
 
-                <div className="lg:w-1/2 p-6">
+                <div className="lg:w-1/2 p-6 max-h-[90vh] overflow-y-auto">
                   <div className="mb-6">
                     <h3 className="text-xl font-medium text-black">
                       {selectedOption.name} -{" "}

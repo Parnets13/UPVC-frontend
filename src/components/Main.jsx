@@ -29,7 +29,7 @@ const Main = () => {
         <motion.button
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
-          onClick={() => navigate('/buyerForm')}
+          onClick={() => navigate('/buyer-login')}
           className="bg-gradient-to-r from-[#3FACE2] to-blue-500 text-orange-400 font-bold text-lg px-8 py-4 rounded-xl shadow-lg border border-white"
         >
           <div className="flex flex-col">

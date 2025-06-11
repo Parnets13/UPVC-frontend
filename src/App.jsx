@@ -27,7 +27,15 @@ import Leads from './Buyer/Leads.jsx';
 import Lead from './Seller/Lead.jsx';
 import SellerAccountPage from './Seller/SellerAccountPage.jsx';
 import Forrer from './Seller/Forrer';
-
+import WindowPrice from './Buyer/WindowPrice.jsx';
+import WindowOptions from './Buyer/WindowOptions.jsx';
+import WhiteVsColor from './Buyer/WhiteVsColor.jsx';
+import TheProcess from './Buyer/TheProcess.jsx';
+import Category from './Buyer/Category.jsx';
+import HistoryPage from './Buyer/HistoryPage.jsx';
+import BuyerLogin from './Buyer/BuyerLogin.jsx';
+import NavTab from './components/NavTab.jsx';
+import SelectionPage from './Buyer/SelectionPage.jsx';
 
 
 
@@ -45,16 +53,26 @@ export default function App() {
           <Route path="/" element={<Main />} />
           <Route path="/buyerForm" element={<BuyerForm />} />
           <Route path="/otp-verification" element={<OTPVerification />} />
+          <Route path='/buyer-login' element={<BuyerLogin/>}/>
+          <Route path='/navtab' element={<NavTab/>}/>
         
       
         
        
         <Route path="/" element={<Layout />}>
           <Route path="/home" element={<Home />} />
+          <Route path='/category' element={<Category/>}/>
+          <Route path='select' element={<SelectionPage/>}/>
+          <Route path='/history' element={<HistoryPage/>}/>
           <Route path="/seller-responses" element={<SellerResponses />} />
           <Route path="/contact-sellers" element={<ContactSellers />} />
           <Route path='/Insights' element={<InsightsAdsPage/>} />
           <Route path='/account'element={<AccountPage />} />
+          <Route path='/window-price' element={<WindowPrice/>}/>
+          <Route path='/window-options' element={<WindowOptions/>}/>
+          <Route path='/white/color' element={<WhiteVsColor/>}/>
+          <Route path='/process' element={<TheProcess/>}/>
+
           
 
           <Route path='/leads' element={<Leads />} />

@@ -105,7 +105,7 @@ const WhiteVsColor = () => {
   //   </div>
   // );
   return (
-    <div className="bg-white ">
+    <div className="bg-white mt-24">
       <div className="max-w-7xl mx-auto">
         {/* Header Section */}
         <div className="text-center mb-12">
