@@ -36,6 +36,8 @@ import HistoryPage from './Buyer/HistoryPage.jsx';
 import BuyerLogin from './Buyer/BuyerLogin.jsx';
 import NavTab from './components/NavTab.jsx';
 import SelectionPage from './Buyer/SelectionPage.jsx';
+import UploadVideo from './Seller/UploadVideo.jsx';
+import SellerLogin from './Seller/SellerLogin.jsx';
 
 
 
@@ -64,6 +66,7 @@ export default function App() {
           <Route path='/category' element={<Category/>}/>
           <Route path='select' element={<SelectionPage/>}/>
           <Route path='/history' element={<HistoryPage/>}/>
+          
           <Route path="/seller-responses" element={<SellerResponses />} />
           <Route path="/contact-sellers" element={<ContactSellers />} />
           <Route path='/Insights' element={<InsightsAdsPage/>} />
@@ -82,8 +85,10 @@ export default function App() {
           <Route path="/SellerForm" element={<SellerForm />} />
           <Route path='/SellerOTPVerification' element={<SellerOTPVerification />} />
           <Route path="/SellerPendingApproval" element={<SellerPendingApproval />} />
+          <Route path='/SellerLogin' element={<SellerLogin/>}/>
           <Route element={<WithNavbar />}>
           <Route path="/Sellerhome" element={<Sellerhome />} />
+          <Route path='/upload' element={<UploadVideo/>}/>
           <Route path='/SellerLeadDetails' element={<SellerLeadDetails />} />
           <Route path='/SellerContactBuyer' element={<SellerContactBuyer />} />
           <Route path='/lead' element={<Lead />} />

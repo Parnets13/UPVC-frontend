@@ -6,6 +6,7 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import NavTab from "../components/NavTab";
+import { Link } from "react-router-dom";
 
 const categoryData = [
   {
@@ -99,9 +100,11 @@ const CategoryCard = ({ category }) => {
   return (
     <div className="bg-white shadow-md rounded-2xl p-6 relative min-h-[600px] flex flex-col justify-between">
       {/* Select Button */}
+      <Link to={'/select'}>
       <button className="absolute top-4 right-4 bg-black text-white text-xs font-semibold px-4 py-1 rounded-full hover:bg-gray-800 transition">
         SELECT
       </button>
+      </Link>
 
       {/* Title + Description */}
       <div>

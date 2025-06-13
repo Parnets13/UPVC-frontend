@@ -1,5 +1,23 @@
 import React, { useState } from 'react';
 import NavTab from '../components/NavTab';
+productDetails: [
+  {
+    title: "uPVC Window",
+    color: "White",
+    location: "Mumbai",
+    size: 5, // in sq ft or any unit
+    quantity: 20,
+    remarks: "Urgent delivery"
+  },
+  {
+    title: "uPVC Door",
+    color: "Grey",
+    location: "Mumbai",
+    size: 6,
+    quantity: 10,
+    remarks: "Standard order"
+  }
+]
 
 const historyCards = [
   {
@@ -113,7 +131,7 @@ const HistoryPage = () => {
   };
 
   return (
-    <div className="flex flex-col min-h-screen">
+    <div className="flex flex-col min-h-screen mt-24">
       <NavTab />
       
       <div className="flex-grow bg-gray-100">
@@ -124,31 +142,34 @@ const HistoryPage = () => {
           </div>
 
           {/* History Cards */}
-          <div className="space-y-8">
+          <div className="flex flex-wrap justify-center gap-6">
             {historyCards.map((card) => {
               const currentPersonIndex = currentPersonIndices[card.id];
               const person = card.people[currentPersonIndex];
               
               return (
-                <div key={card.id} className="bg-white rounded-lg shadow-lg overflow-hidden border border-gray-200">
+                <div
+                  key={card.id}
+                  className="bg-white rounded-lg shadow-lg overflow-hidden border border-gray-200 w-full max-w-2xl"
+                >
                   {/* Card Header */}
-                  <div className="p-6 bg-gray-50">
-                    <h2 className="text-xl font-bold text-gray-900">{card.name}</h2>
+                  <div className="p-4 bg-gray-50">
+                    <h2 className="text-lg font-bold text-gray-900">{card.name}</h2>
                     <p className="text-gray-600 mt-1">{card.date}</p>
                     <p className="text-gray-600">{card.address}</p>
                   </div>
 
                   {/* Person Details */}
-                  <div className="p-6">
-                    <div className="mb-6">
-                      <div className="p-4 bg-gray-50 rounded-lg border border-gray-200">
-                        <h3 className="font-bold text-lg text-gray-900">{person.name}</h3>
+                  <div className="p-4">
+                    <div className="mb-4">
+                      <div className="p-3 bg-gray-50 rounded-lg border border-gray-200">
+                        <h3 className="font-bold text-md text-gray-900">{person.name}</h3>
                         <p className="text-gray-600">{person.contact}</p>
                       </div>
 
-                      <div className="mt-6 p-6 bg-white rounded-lg border border-gray-200">
+                      <div className="mt-4 p-4 bg-white rounded-lg border border-gray-200">
                         {person.videoUrl && (
-                          <div className="mb-6">
+                          <div className="mb-4">
                             <video controls className="w-full rounded-lg shadow">
                               <source src={person.videoUrl} type="video/mp4" />
                               Your browser does not support the video tag.
@@ -156,74 +177,62 @@ const HistoryPage = () => {
                           </div>
                         )}
                         
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                          <div className="space-y-4">
-                            <div className="bg-gray-50 p-4 rounded-lg">
-                              <h4 className="font-bold text-gray-900 mb-3">Contact Information</h4>
-                              <p className="text-gray-700"><span className="font-medium">WhatsApp:</span> {person.whatsapp}</p>
-                              <p className="text-gray-700"><span className="font-medium">Address:</span> {person.details.address}</p>
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                          <div className="space-y-3">
+                            <div className="bg-gray-50 p-3 rounded-lg">
+                              <h4 className="font-bold text-gray-900 mb-2 text-sm">Contact Information</h4>
+                              <p className="text-gray-700 text-sm"><span className="font-medium">WhatsApp:</span> {person.whatsapp}</p>
+                              <p className="text-gray-700 text-sm"><span className="font-medium">Address:</span> {person.details.address}</p>
                             </div>
                             
-                            <div className="bg-gray-50 p-4 rounded-lg">
-                              <h4 className="font-bold text-gray-900 mb-3">Business Details</h4>
-                              <p className="text-gray-700"><span className="font-medium">Years in Business:</span> {person.details.businessYears}</p>
-                              <p className="text-gray-700"><span className="font-medium">Capacity:</span> {person.details.capacity}</p>
-                              <p className="text-gray-700"><span className="font-medium">Team Size:</span> {person.details.teamSize}</p>
+                            <div className="bg-gray-50 p-3 rounded-lg">
+                              <h4 className="font-bold text-gray-900 mb-2 text-sm">Business Details</h4>
+                              <p className="text-gray-700 text-sm"><span className="font-medium">Years in Business:</span> {person.details.businessYears}</p>
+                              <p className="text-gray-700 text-sm"><span className="font-medium">Capacity:</span> {person.details.capacity}</p>
+                              <p className="text-gray-700 text-sm"><span className="font-medium">Team Size:</span> {person.details.teamSize}</p>
                             </div>
                           </div>
                           
-                          <div className="space-y-4">
-                            <div className="bg-gray-50 p-4 rounded-lg">
-                              <h4 className="font-bold text-gray-900 mb-3">Facility</h4>
-                              <p className="text-gray-700"><span className="font-medium">Plant Area:</span> {person.details.plantArea}</p>
-                              <p className="text-gray-700"><span className="font-medium">Certifications:</span> {person.details.certifications}</p>
+                          <div className="space-y-3">
+                            <div className="bg-gray-50 p-3 rounded-lg">
+                              <h4 className="font-bold text-gray-900 mb-2 text-sm">Facility</h4>
+                              <p className="text-gray-700 text-sm"><span className="font-medium">Plant Area:</span> {person.details.plantArea}</p>
+                              <p className="text-gray-700 text-sm"><span className="font-medium">Certifications:</span> {person.details.certifications}</p>
                             </div>
                             
-                            <div className="bg-gray-50 p-4 rounded-lg">
-                              <h4 className="font-bold text-gray-900 mb-3">Operations</h4>
-                              <p className="text-gray-700"><span className="font-medium">Main Product:</span> {person.details.mainProduct}</p>
-                              <p className="text-gray-700"><span className="font-medium">Delivery Time:</span> {person.details.deliveryTime}</p>
-                              <p className="text-gray-700"><span className="font-medium">Regions Covered:</span> {person.details.regionsCovered}</p>
-                              <p className="text-gray-700"><span className="font-medium">Partners:</span> {person.details.partners}</p>
+                            <div className="bg-gray-50 p-3 rounded-lg">
+                              <h4 className="font-bold text-gray-900 mb-2 text-sm">Operations</h4>
+                              <p className="text-gray-700 text-sm"><span className="font-medium">Main Product:</span> {person.details.mainProduct}</p>
+                              <p className="text-gray-700 text-sm"><span className="font-medium">Delivery Time:</span> {person.details.deliveryTime}</p>
+                              <p className="text-gray-700 text-sm"><span className="font-medium">Regions Covered:</span> {person.details.regionsCovered}</p>
+                              <p className="text-gray-700 text-sm"><span className="font-medium">Partners:</span> {person.details.partners}</p>
                             </div>
                           </div>
                         </div>
                       </div>
                     </div>
 
-                    {/* Navigation Arrows - Bottom */}
+                    {/* Navigation Arrows */}
                     {card.people.length > 1 && (
-                      <div className="flex justify-center space-x-4 mt-6">
+                      <div className="flex justify-center space-x-4 mt-4">
                         <button 
                           onClick={() => navigatePerson('prev', card.id)}
-                          className="flex items-center justify-center p-3 bg-black text-white rounded-full shadow-lg hover:bg-gray-800 transition"
+                          className="flex items-center justify-center p-2 bg-black text-white rounded-full shadow hover:bg-gray-800 transition"
                         >
-                          <svg 
-                            className="w-6 h-6" 
-                            fill="none" 
-                            stroke="currentColor" 
-                            viewBox="0 0 24 24" 
-                            xmlns="http://www.w3.org/2000/svg"
-                          >
+                          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
                           </svg>
                         </button>
                         
-                        <div className="flex items-center text-gray-700">
+                        <div className="flex items-center text-gray-700 text-sm">
                           {currentPersonIndex + 1} / {card.people.length}
                         </div>
                         
                         <button 
                           onClick={() => navigatePerson('next', card.id)}
-                          className="flex items-center justify-center p-3 bg-black text-white rounded-full shadow-lg hover:bg-gray-800 transition"
+                          className="flex items-center justify-center p-2 bg-black text-white rounded-full shadow hover:bg-gray-800 transition"
                         >
-                          <svg 
-                            className="w-6 h-6" 
-                            fill="none" 
-                            stroke="currentColor" 
-                            viewBox="0 0 24 24" 
-                            xmlns="http://www.w3.org/2000/svg"
-                          >
+                          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                           </svg>
                         </button>
