@@ -59,7 +59,7 @@ const SellerForm = () => {
         setIsSubmitting(true);
         setTimeout(() => {
             setIsSubmitting(false);
-            navigate('/Sellerhome');
+            navigate('/lead');
         }, 1500);
     };
 
@@ -212,7 +212,7 @@ const SellerForm = () => {
 
                         {/* Row 6 - File Uploads */}
                         <div className="space-y-1">
-                            <label className="block text-xs font-medium text-gray-700">GST Certificate*</label>
+                            <label className="block text-xs font-medium text-gray-700">GST Certificate</label>
                             <label className="flex flex-col items-center justify-center w-full p-3 border border-gray-300 rounded cursor-pointer hover:bg-blue-50">
                                 {formData.gsgCertificate ? (
                                     <div className="flex items-center text-green-600 text-sm">
@@ -230,13 +230,13 @@ const SellerForm = () => {
                                     name="gsgCertificate" 
                                     onChange={handleChange} 
                                     className="hidden" 
-                                    required 
+                                    
                                 />
                             </label>
                         </div>
 
                         <div className="space-y-1">
-                            <label className="block text-xs font-medium text-gray-700">Visiting Card*</label>
+                            <label className="block text-xs font-medium text-gray-700">Visiting Card</label>
                             <label className="flex flex-col items-center justify-center w-full p-3 border border-gray-300 rounded cursor-pointer hover:bg-blue-50">
                                 {formData.visitingCard ? (
                                     <div className="flex items-center text-green-600 text-sm">
@@ -254,7 +254,7 @@ const SellerForm = () => {
                                     name="visitingCard" 
                                     onChange={handleChange} 
                                     className="hidden" 
-                                    required 
+                                   
                                 />
                             </label>
                         </div>
@@ -294,7 +294,7 @@ const SellerForm = () => {
         type="submit"
         disabled={isSubmitting}
         className={`w-40 py-2 px-4 rounded font-medium text-white text-sm ${
-            isSubmitting ? 'bg-black' : 'bg-blue-600 hover:bg-blue-700'
+            isSubmitting ? 'bg-black' : 'bg-black hover:bg-gray-700'
         }`}
     >
         {isSubmitting ? (

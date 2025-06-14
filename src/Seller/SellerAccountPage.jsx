@@ -101,19 +101,19 @@ const SellerAccountPage = () => {
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
             <div className="bg-gray-50 p-4 rounded-lg border border-gray-200">
-              <h3 className="text-sm font-medium text-gray-600 mb-1">Total Orders</h3>
+              <h3 className="text-sm font-medium text-black mb-1">Total Orders</h3>
               <p className="text-2xl font-bold text-gray-900">{salesStats.totalOrders}</p>
             </div>
             <div className="bg-gray-50 p-4 rounded-lg border border-gray-200">
-              <h3 className="text-sm font-medium text-gray-600 mb-1">Completed</h3>
+              <h3 className="text-sm font-medium text-black mb-1">Completed</h3>
               <p className="text-2xl font-bold text-gray-900">{salesStats.completed}</p>
             </div>
             <div className="bg-gray-50 p-4 rounded-lg border border-gray-200">
-              <h3 className="text-sm font-medium text-gray-600 mb-1">Pending</h3>
+              <h3 className="text-sm font-medium text-black mb-1">Pending</h3>
               <p className="text-2xl font-bold text-gray-900">{salesStats.pending}</p>
             </div>
             <div className="bg-gray-50 p-4 rounded-lg border border-gray-200">
-              <h3 className="text-sm font-medium text-gray-600 mb-1">Revenue</h3>
+              <h3 className="text-sm font-medium text-black mb-1">Revenue</h3>
               <p className="text-2xl font-bold text-gray-900">{salesStats.revenue}</p>
             </div>
           </div>
@@ -122,7 +122,7 @@ const SellerAccountPage = () => {
         {/* Enhanced Seller Profile Section */}
         <div className="bg-white rounded-lg shadow overflow-hidden mb-8 border border-gray-200">
           {/* Profile Header */}
-          <div className="bg-gray-800 p-6 text-white">
+          <div className="bg-black p-6 text-white">
             <div className="flex flex-col md:flex-row items-start md:items-center gap-6">
               <div className="relative">
                 <img
@@ -147,27 +147,27 @@ const SellerAccountPage = () => {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
               {/* Left Column */}
               <div className="space-y-4">
-                <div className="border-b border-gray-200 pb-4">
+                <div className="border-b border-black pb-4">
                   <h2 className="text-lg font-semibold text-gray-900 mb-3">Company Information</h2>
                   <div className="space-y-3">
                     <div className="flex">
-                      <span className="text-gray-600 font-medium w-36">Company Name:</span>
+                      <span className="text-black font-medium w-36">Company Name:</span>
                       <span className="text-gray-800">{sellerProfile.companyName}</span>
                     </div>
                     <div className="flex">
-                      <span className="text-gray-600 font-medium w-36">Address:</span>
+                      <span className="text-black font-medium w-36">Address:</span>
                       <span className="text-gray-800">{sellerProfile.address}</span>
                     </div>
                     <div className="flex">
-                      <span className="text-gray-600 font-medium w-36">Contact Person:</span>
+                      <span className="text-black font-medium w-36">Contact Person:</span>
                       <span className="text-gray-800">{sellerProfile.contactPerson}</span>
                     </div>
                     <div className="flex">
-                      <span className="text-gray-600 font-medium w-36">Year in Business:</span>
+                      <span className="text-black font-medium w-36">Year in Business:</span>
                       <span className="text-gray-800">{sellerProfile.yearInBusiness}</span>
                     </div>
                     <div className="flex">
-                      <span className="text-gray-600 font-medium w-36">Manufacturing:</span>
+                      <span className="text-black font-medium w-36">Manufacturing:</span>
                       <span className="text-gray-800">{sellerProfile.manufacturing}</span>
                     </div>
                   </div>
@@ -177,19 +177,19 @@ const SellerAccountPage = () => {
                   <h2 className="text-lg font-semibold text-gray-900 mb-3">Contact Details</h2>
                   <div className="space-y-3">
                     <div className="flex">
-                      <span className="text-gray-600 font-medium w-36">Phone:</span>
+                      <span className="text-black font-medium w-36">Phone:</span>
                       <span className="text-gray-800">{sellerProfile.contactNo}</span>
                     </div>
                     <div className="flex">
-                      <span className="text-gray-600 font-medium w-36">WhatsApp:</span>
+                      <span className="text-black font-medium w-36">WhatsApp:</span>
                       <span className="text-gray-800">{sellerProfile.whatsappNo}</span>
                     </div>
                     <div className="flex">
-                      <span className="text-gray-600 font-medium w-36">Email:</span>
+                      <span className="text-black font-medium w-36">Email:</span>
                       <span className="text-gray-800">{sellerProfile.email}</span>
                     </div>
                     <div className="flex">
-                      <span className="text-gray-600 font-medium w-36">Website:</span>
+                      <span className="text-black font-medium w-36">Website:</span>
                       <a
                         href={`https://${sellerProfile.website}`}
                         target="_blank"
@@ -209,7 +209,7 @@ const SellerAccountPage = () => {
                   <h2 className="text-lg font-semibold text-gray-900 mb-3">Business Details</h2>
                   <div className="space-y-3">
                     <div className="flex">
-                      <span className="text-gray-600 font-medium w-36">Brands Used:</span>
+                      <span className="text-black font-medium w-36">Brands Used:</span>
                       <span className="text-gray-800">{sellerProfile.brandUsed}</span>
                     </div>
                   </div>
@@ -219,7 +219,7 @@ const SellerAccountPage = () => {
                   <h2 className="text-lg font-semibold text-gray-900 mb-3">Documents</h2>
                   <div className="space-y-4">
                     <div>
-                      <p className="text-gray-600 font-medium mb-2">GST Certificate</p>
+                      <p className="text-black font-medium mb-2">GST Certificate</p>
                       <div className="flex items-center gap-4">
                         <div className="border border-gray-200 rounded-lg p-2">
                           <img
@@ -235,7 +235,7 @@ const SellerAccountPage = () => {
                       </div>
                     </div>
                     <div>
-                      <p className="text-gray-600 font-medium mb-2">Visiting Card</p>
+                      <p className="text-black font-medium mb-2">Visiting Card</p>
                       <div className="flex items-center gap-4">
                         <div className="border border-gray-200 rounded-lg p-2">
                           <img
@@ -278,12 +278,12 @@ const SellerAccountPage = () => {
             <table className="min-w-full divide-y divide-gray-200">
               <thead className="bg-gray-50">
                 <tr>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-600 uppercase tracking-wider">Lead ID</th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-600 uppercase tracking-wider">Customer</th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-600 uppercase tracking-wider">Product</th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-600 uppercase tracking-wider">Date</th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-600 uppercase tracking-wider">Status</th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-600 uppercase tracking-wider">Actions</th>
+                  <th className="px-6 py-3 text-left text-xs font-medium text-black uppercase tracking-wider">Lead ID</th>
+                  <th className="px-6 py-3 text-left text-xs font-medium text-black uppercase tracking-wider">Customer</th>
+                  <th className="px-6 py-3 text-left text-xs font-medium text-black uppercase tracking-wider">Product</th>
+                  <th className="px-6 py-3 text-left text-xs font-medium text-black uppercase tracking-wider">Date</th>
+                  <th className="px-6 py-3 text-left text-xs font-medium text-black uppercase tracking-wider">Status</th>
+                  <th className="px-6 py-3 text-left text-xs font-medium text-black uppercase tracking-wider">Actions</th>
                 </tr>
               </thead>
               <tbody className="bg-white divide-y divide-gray-200">
@@ -291,9 +291,9 @@ const SellerAccountPage = () => {
                   <React.Fragment key={lead.id}>
                     <tr className="hover:bg-gray-50">
                       <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">#{lead.id}</td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-600">{lead.name}</td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-600">{lead.product}</td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-600">{lead.date}</td>
+                      <td className="px-6 py-4 whitespace-nowrap text-sm text-black">{lead.name}</td>
+                      <td className="px-6 py-4 whitespace-nowrap text-sm text-black">{lead.product}</td>
+                      <td className="px-6 py-4 whitespace-nowrap text-sm text-black">{lead.date}</td>
                       <td className="px-6 py-4 whitespace-nowrap">
                         <span className={`px-2 inline-flex text-xs leading-5 font-semibold rounded-full ${lead.status === 'New' ? 'bg-gray-100 text-gray-800' :
                             lead.status === 'Contacted' ? 'bg-gray-200 text-gray-800' :
@@ -318,13 +318,13 @@ const SellerAccountPage = () => {
                           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                             <div>
                               <h4 className="font-medium text-gray-900 mb-2">Contact Details</h4>
-                              <p className="text-sm text-gray-600"><span className="font-medium">Phone:</span> {lead.details.phone}</p>
-                              <p className="text-sm text-gray-600"><span className="font-medium">Email:</span> {lead.details.email}</p>
-                              <p className="text-sm text-gray-600"><span className="font-medium">Address:</span> {lead.details.address}</p>
+                              <p className="text-sm text-black"><span className="font-medium">Phone:</span> {lead.details.phone}</p>
+                              <p className="text-sm text-black"><span className="font-medium">Email:</span> {lead.details.email}</p>
+                              <p className="text-sm text-black"><span className="font-medium">Address:</span> {lead.details.address}</p>
                             </div>
                             <div>
                               <h4 className="font-medium text-gray-900 mb-2">Requirements</h4>
-                              <p className="text-sm text-gray-600">{lead.details.requirements}</p>
+                              <p className="text-sm text-black">{lead.details.requirements}</p>
                             </div>
                           </div>
                         </td>

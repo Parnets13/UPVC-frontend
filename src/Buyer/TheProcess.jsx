@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 const TheProcess = () => {
   const steps = [
     'Select your design, dimensions, and quantity',
@@ -60,6 +61,13 @@ const TheProcess = () => {
               </div>
             ))}
           </div>
+        </div>
+         <div className="mt-12 text-center">
+          <Link to={'/window-options'}>
+            <button className="bg-black text-white px-8 py-3 rounded-lg font-medium hover:bg-gray-800 transition-colors">
+              Buy Now
+            </button>
+          </Link>
         </div>
       </div>
     </div>

@@ -4,20 +4,26 @@ import {
   FiX,
   FiChevronLeft,
   FiChevronRight,
+  FiPlus,
+  FiTrash2,
 } from "react-icons/fi";
 import dummy2 from "../assets/dummy2.mp4";
-
+import { Link } from "react-router-dom";
+import logo from '../assets/logo.png';
 const WindowOptions = () => {
   const [selectedOption, setSelectedOption] = useState(null);
   const [currentDesignIndex, setCurrentDesignIndex] = useState(0);
-  const [formData, setFormData] = useState({
-    color: "",
-    location: "",
-    height: "",
-    width: "",
-    quantity: "1",
-    remark: "",
-  });
+  const [configurations, setConfigurations] = useState([
+    {
+      color: "",
+      location: "",
+      height: "",
+      width: "",
+      quantity: "1",
+      remark: "",
+    },
+  ]);
+  const [currentConfigIndex, setCurrentConfigIndex] = useState(0);
 
   const windowOptions = [
     {
@@ -127,14 +133,17 @@ const WindowOptions = () => {
   const openModal = (option) => {
     setSelectedOption(option);
     setCurrentDesignIndex(0);
-    setFormData({
-      color: "",
-      location: "",
-      height: "",
-      width: "",
-      quantity: "1",
-      remark: "",
-    });
+    setConfigurations([
+      {
+        color: "",
+        location: "",
+        height: "",
+        width: "",
+        quantity: "1",
+        remark: "",
+      },
+    ]);
+    setCurrentConfigIndex(0);
   };
 
   const closeModal = () => {
@@ -155,32 +164,59 @@ const WindowOptions = () => {
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    setFormData((prev) => ({
-      ...prev,
+    const updatedConfigurations = [...configurations];
+    updatedConfigurations[currentConfigIndex] = {
+      ...updatedConfigurations[currentConfigIndex],
       [name]: value,
-    }));
+    };
+    setConfigurations(updatedConfigurations);
+  };
+
+  const addNewConfiguration = () => {
+    setConfigurations([
+      ...configurations,
+      {
+        color: "",
+        location: "",
+        height: "",
+        width: "",
+        quantity: "1",
+        remark: "",
+      },
+    ]);
+    setCurrentConfigIndex(configurations.length);
+  };
+
+  const removeConfiguration = (index) => {
+    if (configurations.length <= 1) return;
+    
+    const updatedConfigurations = configurations.filter((_, i) => i !== index);
+    setConfigurations(updatedConfigurations);
+    
+    if (currentConfigIndex >= index) {
+      setCurrentConfigIndex(Math.max(0, currentConfigIndex - 1));
+    }
+  };
+
+  const switchConfiguration = (index) => {
+    setCurrentConfigIndex(index);
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Handle form submission
-    console.log("Form submitted:", formData);
+    console.log("All configurations submitted:", configurations);
   };
 
   return (
-    <div className="min-h-screen bg-white mt-24 ">
+    <div className="min-h-screen bg-white mt-24">
       <div className="max-w-7xl mx-auto">
         <div className="flex flex-col justify-center items-center">
-          {/* <h3 className="text-3xl font-medium text-black mb-4">
-            
-          </h3> */}
-          <h3 className="text-3xl font-light  tracking-tight text-black sm:text-4xl">
-            Window <span className="font-medium"> Options</span>
+          <h3 className="text-3xl font-light tracking-tight text-black sm:text-4xl">
+            Window <span className="font-medium">Options</span>
           </h3>
           <div className="mt-2 h-0.5 w-20 mb-2 bg-black mx-auto"></div>
           <p className="text-gray-600 text-lg mb-8">
-            Choose from our wide range of premium window styles and
-            customization options.
+            Choose from our wide range of premium window styles and customization options.
           </p>
         </div>
 
@@ -189,7 +225,7 @@ const WindowOptions = () => {
             <div
               key={option.id}
               onClick={() => openModal(option)}
-              className="flex flex-row justify-between   items-center group cursor-pointer border border-gray-200 rounded-xl overflow-hidden hover:shadow-lg transition-all duration-300"
+              className="flex flex-row justify-between items-center group cursor-pointer border border-gray-200 rounded-xl overflow-hidden hover:shadow-lg transition-all duration-300"
             >
               <div className="p-5">
                 <h4 className="text-xl font-medium text-black mb-2">
@@ -226,7 +262,6 @@ const WindowOptions = () => {
           ))}
         </div>
 
-        {/* Modal */}
         {selectedOption && (
           <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
             <button
@@ -254,8 +289,15 @@ const WindowOptions = () => {
               </button>
             )}
 
-            {/* Modal Content */}
             <div className="bg-white rounded-xl max-w-7xl w-full max-h-[90vh] overflow-hidden flex flex-col relative">
+              <div className="absolute top-4 right-4  px-3 py-1 rounded-full text-sm font-medium z-10">
+               <img
+                               src={logo}
+                               className="w-30 h-20 mt-2"
+                               alt="Logo"
+                             />
+              </div>
+              
               <div className="flex flex-col lg:flex-row flex-1 overflow-auto">
                 <div className="lg:w-1/2">
                   <div className="aspect-w-16 aspect-h-9 h-full bg-black overflow-hidden">
@@ -273,8 +315,7 @@ const WindowOptions = () => {
                 <div className="lg:w-1/2 p-6 max-h-[90vh] overflow-y-auto">
                   <div className="mb-6">
                     <h3 className="text-xl font-medium text-black">
-                      {selectedOption.name} -{" "}
-                      {selectedOption.designs[currentDesignIndex].title}
+                      {selectedOption.name} - {selectedOption.designs[currentDesignIndex].title}
                     </h3>
                     <h4 className="text-lg font-medium text-black mb-3">
                       Key Features
@@ -295,6 +336,41 @@ const WindowOptions = () => {
                     <h4 className="text-lg font-medium text-black mb-4">
                       Request a Quote
                     </h4>
+                    
+                    <div className="flex flex-wrap gap-2 mb-4">
+                      {configurations.map((_, index) => (
+                        <div key={index} className="relative">
+                          <button
+                            onClick={() => switchConfiguration(index)}
+                            className={`px-3 py-1 rounded-full text-sm flex items-center ${
+                              currentConfigIndex === index
+                                ? "bg-black text-white"
+                                : "bg-gray-100 text-gray-700"
+                            }`}
+                          >
+                            Add {index + 1}
+                            {configurations.length > 1 && (
+                              <button
+                                onClick={(e) => {
+                                  e.stopPropagation();
+                                  removeConfiguration(index);
+                                }}
+                                className="ml-1 text-red-500 hover:text-red-700"
+                              >
+                                <FiTrash2 className="w-3 h-3" />
+                              </button>
+                            )}
+                          </button>
+                        </div>
+                      ))}
+                      <button
+                        onClick={addNewConfiguration}
+                        className="flex items-center px-3 py-1 rounded-full text-sm bg-blue-100 text-blue-700 hover:bg-blue-200"
+                      >
+                        <FiPlus className="mr-1" /> Add
+                      </button>
+                    </div>
+                    
                     <form onSubmit={handleSubmit}>
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
                         <div>
@@ -303,7 +379,7 @@ const WindowOptions = () => {
                           </label>
                           <select
                             name="color"
-                            value={formData.color}
+                            value={configurations[currentConfigIndex].color}
                             onChange={handleInputChange}
                             className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-1 focus:ring-black"
                           >
@@ -321,7 +397,7 @@ const WindowOptions = () => {
                           <input
                             type="text"
                             name="location"
-                            value={formData.location}
+                            value={configurations[currentConfigIndex].location}
                             onChange={handleInputChange}
                             placeholder="Where will it be installed?"
                             className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-1 focus:ring-black"
@@ -334,7 +410,7 @@ const WindowOptions = () => {
                           <input
                             type="number"
                             name="height"
-                            value={formData.height}
+                            value={configurations[currentConfigIndex].height}
                             onChange={handleInputChange}
                             placeholder="Enter height"
                             className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-1 focus:ring-black"
@@ -347,7 +423,7 @@ const WindowOptions = () => {
                           <input
                             type="number"
                             name="width"
-                            value={formData.width}
+                            value={configurations[currentConfigIndex].width}
                             onChange={handleInputChange}
                             placeholder="Enter width"
                             className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-1 focus:ring-black"
@@ -360,7 +436,7 @@ const WindowOptions = () => {
                           <input
                             type="number"
                             name="quantity"
-                            value={formData.quantity}
+                            value={configurations[currentConfigIndex].quantity}
                             onChange={handleInputChange}
                             min="1"
                             className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-1 focus:ring-black"
@@ -373,18 +449,20 @@ const WindowOptions = () => {
                         </label>
                         <textarea
                           name="remark"
-                          value={formData.remark}
+                          value={configurations[currentConfigIndex].remark}
                           onChange={handleInputChange}
                           rows="3"
                           className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-1 focus:ring-black"
                         ></textarea>
                       </div>
-                      <button
-                        type="submit"
-                        className="w-full bg-black text-white py-3 rounded-lg font-medium hover:bg-gray-800 transition-colors"
-                      >
-                        Submit Quote Request
-                      </button>
+                      <Link to={'/category'}>
+                        <button
+                          type="submit"
+                          className="w-full bg-black text-white py-3 rounded-lg font-medium hover:bg-gray-800 transition-colors"
+                        >
+                          Submit {configurations.length > 1 ? `${configurations.length} Configurations` : 'Quote Request'}
+                        </button>
+                      </Link>
                     </form>
                   </div>
                 </div>

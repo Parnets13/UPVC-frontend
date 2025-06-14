@@ -1,78 +1,111 @@
-import React from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
+import React from "react";
+import { useLocation } from "react-router-dom";
 
-const ContactBuyer = () => {
-    const navigate = useNavigate();
-    const { leadId } = useParams();
+const ReviewPage = () => {
+  const { state } = useLocation();
 
-    const leads = [
-      {
-        id: 1,
-        buyerName: "Rahul Sharma",
-        phoneNumber: "+919876543210",
-        request: "10 sq ft, ₹15,000, tinted glass"
-      },
-      {
-        id: 2,
-        buyerName: "Priya Patel",
-        phoneNumber: "+919876543211",
-        request: "12 sq ft, ₹13,000, UPVC doors"
-      },
-      {
-        id: 3,
-        buyerName: "Amit Singh",
-        phoneNumber: "+919876543212",
-        request: "8 sq ft, ₹18,000, frosted glass"
-      }
-    ];
-    
-    const lead = leads.find(l => l.id === parseInt(leadId)) || leads[0];
+  // Dummy Data (used if no state is provided)
+  const dummyCategory = { name: "UPVC Windows" };
+  const dummyWindowSelections = [
+    {
+      type: "Sliding Window",
+      color: "White",
+      location: "Living Room",
+      size: "5ft x 4ft",
+      quantity: 2,
+      total: "20",
+      remarks: "Frosted glass",
+    },
+    {
+      type: "Casement Window",
+      color: "Wooden Finish",
+      location: "Bedroom",
+      size: "3ft x 5ft",
+      quantity: 3,
+      total: "45",
+      remarks: "Double glazing",
+    },
+  ];
+  const dummyFormData = {
+    fullName: "John Doe",
+    contact: "+91 9876543210",
+    whatsapp: "+91 9876543210",
+    email: "john@example.com",
+    projectName: "Dream Home",
+    projectAddress: "123 Maple Street, Mumbai",
+    pinCode: "400001",
+    projectStage: "Planning",
+    timeline: "6 months",
+    totalSqFeet: "2000",
+  };
 
-    return (
-        <div className="min-h-screen bg-gray-100 p-6">
-            <div className="max-w-md mx-auto bg-white rounded-xl shadow-md overflow-hidden">
-                <div className="p-6 text-center">
-                    <h1 className="text-2xl font-bold text-gray-800 mb-4">You've Got It!</h1>
-                    <p className="text-gray-600 mb-4">Details for: {lead.request}</p>
-                    
-                    <div className="space-y-4 mb-6">
-                        <div className="bg-blue-50 p-4 rounded-lg">
-                            <h2 className="font-semibold text-gray-700">Buyer Name</h2>
-                            <p className="text-gray-600">{lead.buyerName}</p>
-                        </div>
-                        
-                        <div className="bg-green-50 p-4 rounded-lg">
-                            <h2 className="font-semibold text-gray-700">Phone Number</h2>
-                            <p className="text-gray-600">{lead.phoneNumber}</p>
-                        </div>
-                    </div>
-                   
-                    <p className="text-gray-600 mb-6 italic">"Call or WhatsApp with your quote!"</p>
-                    
-                    <div className="flex flex-col space-y-3">
-                        <a
-                            href={`tel:${lead.phoneNumber.replace(/[^0-9+]/g, '')}`}
-                            className="bg-green-500 hover:bg-green-600 text-white py-2 px-4 rounded-lg transition text-center"
-                        >
-                            Call Buyer
-                        </a>
-                        <a
-                            href={`https://wa.me/${lead.phoneNumber.replace(/[^0-9]/g, '')}`}
-                            className="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-lg transition text-center"
-                        >
-                            WhatsApp Buyer
-                        </a>
-                        <button
-                            onClick={() => navigate('/SellerDashboard')}
-                            className="bg-gray-500 hover:bg-gray-600 text-white py-2 px-4 rounded-lg transition"
-                        >
-                            Back to Dashboard
-                        </button>
-                    </div>
-                </div>
-            </div>
+  const windowSelections = state?.windowSelections || dummyWindowSelections;
+  const formData = state?.formData || dummyFormData;
+  const category = state?.category || dummyCategory;
+
+  return (
+    <div className="mt-12 p-6">
+      <h1 className="text-2xl font-bold text-center mb-6">
+        Your {category.name} Selection Summary
+      </h1>
+
+      {/* Table (Read-only) */}
+      <div className="mb-12 max-w-6xl mx-auto">
+        <div className="overflow-x-auto">
+          <table className="min-w-full border border-gray-300 rounded-lg shadow-sm bg-white">
+            <thead className="bg-black text-white">
+              <tr>
+                <th className="p-2 text-left">#</th>
+                <th className="p-2 text-left">Type</th>
+                <th className="p-2 text-left">Color</th>
+                <th className="p-2 text-left">Location</th>
+                <th className="p-2 text-left">Size</th>
+                <th className="p-2 text-left">Qty</th>
+                <th className="p-2 text-left">Total</th>
+                <th className="p-2 text-left">Remarks</th>
+              </tr>
+            </thead>
+            <tbody>
+              {windowSelections.map((window, index) => (
+                <tr key={index} className="border-t">
+                  <td className="p-2">{index + 1}</td>
+                  <td className="p-2">{window.type}</td>
+                  <td className="p-2">{window.color}</td>
+                  <td className="p-2">{window.location}</td>
+                  <td className="p-2">{window.size}</td>
+                  <td className="p-2">{window.quantity}</td>
+                  <td className="p-2 font-bold">{window.total}</td>
+                  <td className="p-2">{window.remarks}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
         </div>
-    );
+      </div>
+
+      {/* Personal and Project Info */}
+      <div className="bg-white p-6 rounded-lg shadow-md max-w-6xl mx-auto">
+        <h2 className="text-xl font-bold mb-4">BUYER DETAILS</h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+          <div><strong>Full Name:</strong> {formData.fullName}</div>
+          <div><strong>Contact:</strong> {formData.contact}</div>
+          <div><strong>WhatsApp:</strong> {formData.whatsapp}</div>
+          <div><strong>Email:</strong> {formData.email}</div>
+        </div>
+
+        <h2 className="text-xl font-bold mb-4">PROJECT DETAILS</h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div><strong>Project Name:</strong> {formData.projectName}</div>
+          <div><strong>Project Address:</strong> {formData.projectAddress}</div>
+          <div><strong>Pin Code:</strong> {formData.pinCode}</div>
+          <div><strong>Project Stage:</strong> {formData.projectStage}</div>
+          <div><strong>Timeline:</strong> {formData.timeline}</div>
+          <div><strong>Total Sq. Feet:</strong> {formData.totalSqFeet}</div>
+          <div><strong>Selected Category:</strong> {category.name}</div>
+        </div>
+      </div>
+    </div>
+  );
 };
 
-export default ContactBuyer;
+export default ReviewPage;

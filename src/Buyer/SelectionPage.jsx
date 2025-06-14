@@ -5,9 +5,8 @@ const SelectionPage = () => {
   const navigate = useNavigate();
   const { state } = useLocation();
   const category = state?.category || {};
-  
-  // Window selection data from the image
-  const windowSelections = [
+
+  const [windowSelections, setWindowSelections] = useState([
     {
       type: "Sliding Window",
       color: "White",
@@ -35,7 +34,19 @@ const SelectionPage = () => {
       total: "30",
       remarks: "Triple glazing"
     }
-  ];
+  ]);
+
+  const [isEditing, setIsEditing] = useState(false);
+  const [editingIndex, setEditingIndex] = useState(null);
+  const [editFormData, setEditFormData] = useState({
+    type: "",
+    color: "",
+    location: "",
+    size: "",
+    quantity: "",
+    total: "",
+    remarks: ""
+  });
 
   const [formData, setFormData] = useState({
     fullName: "",
@@ -57,66 +68,181 @@ const SelectionPage = () => {
     setFormData(prev => ({ ...prev, [name]: value }));
   };
 
-  return (
-    <div className="mt-24 p-6 ">
-      <h1 className="text-2xl font-bold mb-6">Customize Your {category.name} Selection</h1>
-      
-      {/* Window Selection Cards Section */}
-      <div className="mb-12 max-w-8xl mx-auto">
-        <div className="flex justify-center items-center mb-6 p-4 bg-black rounded-lg shadow-lg">
-          <h1 className="text-2xl font-bold text-white">YOUR SELECTIONS</h1>
-        </div>
-        
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {windowSelections.map((window, index) => (
-            <div key={index} className="bg-white rounded-lg shadow-md p-6 border border-gray-200">
-              <h3 className="text-lg font-bold mb-4 uppercase">{window.type}</h3>
-              
-              {/* Color and Location */}
-              <div className="grid grid-cols-2 gap-4 mb-4">
-                <div>
-                  <h4 className="font-bold text-gray-700 text-sm uppercase">Color</h4>
-                  <p className="text-gray-900">{window.color}</p>
-                </div>
-                <div>
-                  <h4 className="font-bold text-gray-700 text-sm uppercase">Location</h4>
-                  <p className="text-gray-900">{window.location}</p>
-                </div>
-              </div>
-              
-              {/* Size and Quantity */}
-              <div className="grid grid-cols-2 gap-4 mb-4">
-                <div>
-                  <h4 className="font-bold text-gray-700 text-sm uppercase">Size</h4>
-                  <p className="text-gray-900">{window.size}</p>
-                </div>
-                <div>
-                  <h4 className="font-bold text-gray-700 text-sm uppercase">Quantity</h4>
-                  <p className="text-gray-900">{window.quantity}</p>
-                </div>
-              </div>
-              
-              {/* Total */}
-             <div className="mb-4 border-t flex justify-between">
+  const handleDelete = (index) => {
+    const updatedSelections = windowSelections.filter((_, i) => i !== index);
+    setWindowSelections(updatedSelections);
+  };
 
-                <h4 className="font-bold text-gray-700 text-sm uppercase ">Total</h4>
-                <p className="text-xl font-bold text-gray-900">{window.total}</p>
-              </div>
-              
-              {/* Remarks */}
-              <div className="border-t">
-                <h4 className="font-bold text-gray-700 text-sm uppercase">Remarks</h4>
-                <p className="text-gray-900">{window.remarks}</p>
-              </div>
-            </div>
-          ))}
+  const handleEdit = (index) => {
+    setEditingIndex(index);
+    setEditFormData(windowSelections[index]);
+    setIsEditing(true);
+  };
+
+  const handleEditChange = (e) => {
+    const { name, value } = e.target;
+    setEditFormData(prev => ({ ...prev, [name]: value }));
+  };
+
+  const handleUpdate = () => {
+    const updated = [...windowSelections];
+    updated[editingIndex] = editFormData;
+    setWindowSelections(updated);
+    setIsEditing(false);
+  };
+
+  return (
+    <div className="mt-24 p-6">
+      <h1 className="text-2xl font-bold text-center  mb-6">Customize Your {category.name} Selection</h1>
+
+      {/* Window Selection Table */}
+      <div className="mb-12 max-w-6xl mx-auto">
+        
+        <div className="overflow-x-auto">
+          <table className="min-w-full border border-gray-300 rounded-lg shadow-sm bg-white">
+            <thead className="bg-black text-white">
+              <tr>
+                <th className="p-2 text-left">#</th>
+                <th className="p-2 text-left">Type</th>
+                <th className="p-2 text-left">Color</th>
+                <th className="p-2 text-left">Location</th>
+                <th className="p-2 text-left">Size</th>
+                <th className="p-2 text-left">Qty</th>
+                <th className="p-2 text-left">Total</th>
+                <th className="p-2 text-left">Remarks</th>
+                <th className="p-2 text-left">Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              {windowSelections.map((window, index) => (
+                <tr key={index} className="border-t">
+                  <td className="p-2">{index + 1}</td>
+                  <td className="p-2">{window.type}</td>
+                  <td className="p-2">{window.color}</td>
+                  <td className="p-2">{window.location}</td>
+                  <td className="p-2">{window.size}</td>
+                  <td className="p-2">{window.quantity}</td>
+                  <td className="p-2 font-bold">{window.total}</td>
+                  <td className="p-2">{window.remarks}</td>
+                  <td className="p-2 space-x-2">
+                    <button
+                      onClick={() => handleEdit(index)}
+                      className="px-3 py-1 bg-gray-500 text-white rounded text-sm"
+                    >
+                      Edit
+                    </button>
+                    <button
+                      onClick={() => handleDelete(index)}
+                      className="px-3 py-1 bg-black text-white rounded text-sm"
+                    >
+                      Delete
+                    </button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
         </div>
       </div>
 
+      {/* Edit Modal */}
+      {isEditing && (
+  <div className="fixed inset-0 bg-black bg-opacity-40 flex justify-center items-center z-50">
+    <div className="bg-white p-6 rounded-lg shadow-lg w-full max-w-xl">
+      <h2 className="text-xl font-semibold mb-4">Edit Window Selection</h2>
+      <div className="grid grid-cols-1 gap-4 mb-4">
+        <div>
+          <label className="block text-gray-700 font-medium mb-1">Window/Door Type*</label>
+          <input
+            name="type"
+            value={editFormData.type}
+            onChange={handleEditChange}
+            className="w-full border p-2 rounded"
+            placeholder="Type"
+          />
+        </div>
+        <div>
+          <label className="block text-gray-700 font-medium mb-1">Color</label>
+          <input
+            name="color"
+            value={editFormData.color}
+            onChange={handleEditChange}
+            className="w-full border p-2 rounded"
+            placeholder="Color"
+          />
+        </div>
+        <div>
+          <label className="block text-gray-700 font-medium mb-1">Location</label>
+          <input
+            name="location"
+            value={editFormData.location}
+            onChange={handleEditChange}
+            className="w-full border p-2 rounded"
+            placeholder="Location"
+          />
+        </div>
+        <div>
+          <label className="block text-gray-700 font-medium mb-1">Size</label>
+          <input
+            name="size"
+            value={editFormData.size}
+            onChange={handleEditChange}
+            className="w-full border p-2 rounded"
+            placeholder="Size"
+          />
+        </div>
+        <div>
+          <label className="block text-gray-700 font-medium mb-1">Quantity</label>
+          <input
+            name="quantity"
+            value={editFormData.quantity}
+            onChange={handleEditChange}
+            className="w-full border p-2 rounded"
+            placeholder="Quantity"
+          />
+        </div>
+        <div>
+          <label className="block text-gray-700 font-medium mb-1">Total</label>
+          <input
+            name="total"
+            value={editFormData.total}
+            onChange={handleEditChange}
+            className="w-full border p-2 rounded"
+            placeholder="Total"
+          />
+        </div>
+        <div>
+          <label className="block text-gray-700 font-medium mb-1">Remark</label>
+          <input
+            name="remarks"
+            value={editFormData.remarks}
+            onChange={handleEditChange}
+            className="w-full border p-2 rounded"
+            placeholder="Remarks"
+          />
+        </div>
+      </div>
+      <div className="flex justify-end space-x-2">
+        <button
+          onClick={() => setIsEditing(false)}
+          className="px-4 py-2 bg-gray-400 text-white rounded"
+        >
+          Cancel
+        </button>
+        <button
+          onClick={handleUpdate}
+          className="px-4 py-2 bg-black text-white rounded"
+        >
+          Update
+        </button>
+      </div>
+    </div>
+  </div>
+)}
+
       {/* Personal & Project Details Form */}
-      <div className="bg- p-6 rounded-lg shadow-md mb-8 max-w-6xl mx-auto">
-        <h2 className="text-xl font-bold  rounded-lg  text-white mb-4 p-4 bg-black">PERSONAL DETAILS</h2>
-        
+      <div className="bg-white p-6 rounded-lg shadow-md mb-8 max-w-6xl mx-auto">
+        <h2 className="text-xl font-bold rounded-lg text-white mb-4 p-4 bg-black">PERSONAL DETAILS</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
           <div>
             <label className="block text-sm font-medium mb-1">Full Name</label>
@@ -129,7 +255,6 @@ const SelectionPage = () => {
               placeholder="Enter your full name"
             />
           </div>
-          
           <div className="grid grid-cols-2 gap-4">
             <div>
               <label className="block text-sm font-medium mb-1">Contact</label>
@@ -154,7 +279,6 @@ const SelectionPage = () => {
               />
             </div>
           </div>
-          
           <div>
             <label className="block text-sm font-medium mb-1">Email Address</label>
             <input
@@ -167,9 +291,8 @@ const SelectionPage = () => {
             />
           </div>
         </div>
-        
+
         <h2 className="text-xl font-bold mb-4">PROJECT DETAILS</h2>
-        
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div>
             <label className="block text-sm font-medium mb-1">Project Name</label>
@@ -182,7 +305,6 @@ const SelectionPage = () => {
               placeholder="Project name"
             />
           </div>
-          
           <div>
             <label className="block text-sm font-medium mb-1">Project Address</label>
             <input
@@ -194,24 +316,17 @@ const SelectionPage = () => {
               placeholder="Full address"
             />
           </div>
-          
           <div>
             <label className="block text-sm font-medium mb-1">Pin Code</label>
-            <div className="flex gap-2">
-              <input
-                type="text"
-                name="pinCode"
-                value={formData.pinCode}
-                onChange={handleInputChange}
-                className="w-full p-2 border rounded"
-                placeholder="Postal code"
-              />
-              <button className="whitespace-nowrap px-4 bg-gray-100 rounded hover:bg-gray-200">
-                Google Map Link
-              </button>
-            </div>
+            <input
+              type="text"
+              name="pinCode"
+              value={formData.pinCode}
+              onChange={handleInputChange}
+              className="w-full p-2 border rounded"
+              placeholder="Postal code"
+            />
           </div>
-          
           <div className="grid grid-cols-2 gap-4">
             <div>
               <label className="block text-sm font-medium mb-1">Project Stage</label>
@@ -239,7 +354,6 @@ const SelectionPage = () => {
               />
             </div>
           </div>
-          
           <div>
             <label className="block text-sm font-medium mb-1">Total Sq. Feet</label>
             <input
@@ -251,26 +365,23 @@ const SelectionPage = () => {
               placeholder="Total square feet"
             />
           </div>
-          
           <div>
             <label className="block text-sm font-medium mb-1">Selected Category</label>
             <div className="p-2 border rounded bg-gray-50">
               {category.name || "Not selected"}
             </div>
           </div>
-          
         </div>
-        
-  <div className="mt-8 text-center">
-    <button
-      onClick={() => console.log('Request submitted:', formData)}
-      className="px-6 py-2 bg-black text-white rounded  transition"
-    >
-      Request
-    </button>
-  </div>
+
+        <div className="mt-8 text-center">
+          <button
+            onClick={() => console.log('Form submitted:', formData)}
+            className="px-6 py-2 bg-black text-white rounded"
+          >
+            Request
+          </button>
+        </div>
       </div>
-      
     </div>
   );
 };

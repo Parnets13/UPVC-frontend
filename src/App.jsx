@@ -38,6 +38,9 @@ import NavTab from './components/NavTab.jsx';
 import SelectionPage from './Buyer/SelectionPage.jsx';
 import UploadVideo from './Seller/UploadVideo.jsx';
 import SellerLogin from './Seller/SellerLogin.jsx';
+import ContactUs from './Buyer/ContactUs.jsx';
+import AboutUs from './Buyer/AboutUs.jsx';
+import TermsAndConditions from './Buyer/TermsAndConditions.jsx';
 
 
 
@@ -66,7 +69,9 @@ export default function App() {
           <Route path='/category' element={<Category/>}/>
           <Route path='select' element={<SelectionPage/>}/>
           <Route path='/history' element={<HistoryPage/>}/>
-          
+          <Route path='/about' element={<AboutUs/>}/>
+          <Route path='/t&c' element={<TermsAndConditions/>}/>
+          <Route path='/contact' element={<ContactUs/>}/>
           <Route path="/seller-responses" element={<SellerResponses />} />
           <Route path="/contact-sellers" element={<ContactSellers />} />
           <Route path='/Insights' element={<InsightsAdsPage/>} />

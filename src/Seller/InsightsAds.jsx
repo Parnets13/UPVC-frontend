@@ -61,7 +61,7 @@ const InsightsAds = () => {
   return (
     <div className="min-h-screen bg-gray-50 text-black">
       {/* Header */}
-      <header className="border-b border-gray-200 p-4 bg-white">
+      <header className=" border-gray-200 p-4 bg-white">
         <h1 className="text-3xl font-bold text-center">Video Platform</h1>
       </header>
 

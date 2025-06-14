@@ -65,7 +65,7 @@ const UploadVideo = () => {
       
       <div className="max-w-6xl mx-auto space-y-6">
         {/* Full-width Video Preview Card */}
-        <div className="bg-white rounded-lg shadow-md p-6 border border-gray-200 w-full">
+        <div className=" w-full">
           <div className="bg-black bg-opacity-5 rounded-lg overflow-hidden w-full min-h-[400px] flex items-center justify-center">
             {selectedFile ? (
               <video

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-import { FaStar } from "react-icons/fa";
+import { FaStar, FaPhone, FaEnvelope, FaMapMarkerAlt } from "react-icons/fa";
 import { FiEdit, FiLogOut } from "react-icons/fi";
+import { Link } from "react-router-dom";
 
 const AccountPage = () => {
   const [rating, setRating] = useState(0);
@@ -91,6 +92,38 @@ const AccountPage = () => {
 
         {/* Right Column */}
         <div className="w-full lg:w-1/3 space-y-6">
+          {/* Contact Us Card - New Addition */}
+          <div className="bg-white p-5 rounded-xl shadow border">
+            <h3 className="font-bold text-sm">CONTACT US</h3>
+            <div className="space-y-3 mt-3">
+              <div className="flex items-start gap-3">
+                <FaPhone className="text-gray-500 mt-1" />
+                <div>
+                  <p className="text-xs text-gray-500">Phone</p>
+                  <p className="text-sm font-medium">+1 (800) 123-4567</p>
+                </div>
+              </div>
+              <div className="flex items-start gap-3">
+                <FaEnvelope className="text-gray-500 mt-1" />
+                <div>
+                  <p className="text-xs text-gray-500">Email</p>
+                  <p className="text-sm font-medium">support@example.com</p>
+                </div>
+              </div>
+              <div className="flex items-start gap-3">
+                <FaMapMarkerAlt className="text-gray-500 mt-1" />
+                <div>
+                  <p className="text-xs text-gray-500">Address</p>
+                  <p className="text-sm font-medium">123 Business St, Suite 100, San Francisco, CA 94107</p>
+                </div>
+              </div>
+            </div>
+            <Link to={'/contact'}>
+            <button className="w-full mt-4 border border-black py-2 rounded-md font-semibold text-sm">
+              SEND MESSAGE
+            </button></Link>
+          </div>
+
           {/* Terms & Conditions Card */}
           <div className="bg-white p-5 rounded-xl shadow border">
             <h3 className="font-bold text-sm">TERMS & CONDITIONS</h3>
@@ -98,21 +131,25 @@ const AccountPage = () => {
               By using our services, you agree to our terms and conditions. Please
               read them carefully to understand your rights and responsibilities.
             </p>
+            <Link to={'/t&c'}>
             <button className="text-right text-black font-bold text-sm mt-3 flex items-center gap-1">
               VIEW FULL TERMS <span>&rarr;</span>
-            </button>
+            </button></Link>
           </div>
 
           {/* About Us Card */}
+          
           <div className="bg-white p-5 rounded-xl shadow border">
+
             <h3 className="font-bold text-sm">ABOUT US</h3>
             <p className="text-sm mt-2 text-gray-700">
               We are committed to providing premium services with unmatched quality.
               Our team works tirelessly to ensure your complete satisfaction.
             </p>
+            <Link to={'/about'}>
             <button className="text-right text-black font-bold text-sm mt-3 flex items-center gap-1">
               LEARN MORE <span>&rarr;</span>
-            </button>
+            </button></Link>
           </div>
 
           {/* Logout Button */}

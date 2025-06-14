@@ -1,6 +1,6 @@
 import { FiCheckCircle } from "react-icons/fi";
 import dummyVideo from "../assets/dummy.mp4";
-
+import { Link } from "react-router-dom";
 const WhiteVsColor = () => {
 
   const comparisonData = [
@@ -174,42 +174,51 @@ const WhiteVsColor = () => {
             Which One Should You Choose?
           </h4>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div className="bg-blue-50 rounded-lg p-6">
+            <div className="bg-gray-100 rounded-lg p-6">
               <h5 className="font-medium text-black text-lg mb-3">Choose White If:</h5>
               <ul className="space-y-2">
                 <li className="flex items-start">
-                  <span className="bg-blue-100 text-blue-800 rounded-full w-5 h-5 flex items-center justify-center mr-3 mt-0.5 flex-shrink-0">1</span>
+                  <span className="bg-gray-200 text-blue-800 rounded-full w-5 h-5 flex items-center justify-center mr-3 mt-0.5 flex-shrink-0">1</span>
                   <span className="text-gray-700">You prefer a classic, timeless look</span>
                 </li>
                 <li className="flex items-start">
-                  <span className="bg-blue-100 text-blue-800 rounded-full w-5 h-5 flex items-center justify-center mr-3 mt-0.5 flex-shrink-0">2</span>
+                  <span className="bg-gray-200 text-blue-800 rounded-full w-5 h-5 flex items-center justify-center mr-3 mt-0.5 flex-shrink-0">2</span>
                   <span className="text-gray-700">Budget is a primary concern</span>
                 </li>
                 <li className="flex items-start">
-                  <span className="bg-blue-100 text-blue-800 rounded-full w-5 h-5 flex items-center justify-center mr-3 mt-0.5 flex-shrink-0">3</span>
+                  <span className="bg-gray-200 text-blue-800 rounded-full w-5 h-5 flex items-center justify-center mr-3 mt-0.5 flex-shrink-0">3</span>
                   <span className="text-gray-700">You want quick availability</span>
                 </li>
               </ul>
             </div>
-            <div className="bg-purple-50 rounded-lg p-6">
+            <div className="bg-gray-200 rounded-lg p-6">
               <h5 className="font-medium text-black text-lg mb-3">Choose Colored If:</h5>
               <ul className="space-y-2">
                 <li className="flex items-start">
-                  <span className="bg-purple-100 text-purple-800 rounded-full w-5 h-5 flex items-center justify-center mr-3 mt-0.5 flex-shrink-0">1</span>
+                  <span className="bg-gray-100 text-purple-800 rounded-full w-5 h-5 flex items-center justify-center mr-3 mt-0.5 flex-shrink-0">1</span>
                   <span className="text-gray-700">You want to match your home's unique style</span>
                 </li>
                 <li className="flex items-start">
-                  <span className="bg-purple-100 text-purple-800 rounded-full w-5 h-5 flex items-center justify-center mr-3 mt-0.5 flex-shrink-0">2</span>
+                  <span className="bg-gray-100 text-purple-800 rounded-full w-5 h-5 flex items-center justify-center mr-3 mt-0.5 flex-shrink-0">2</span>
                   <span className="text-gray-700">Enhanced curb appeal is important</span>
                 </li>
                 <li className="flex items-start">
-                  <span className="bg-purple-100 text-purple-800 rounded-full w-5 h-5 flex items-center justify-center mr-3 mt-0.5 flex-shrink-0">3</span>
+                  <span className="bg-gray-100 text-purple-800 rounded-full w-5 h-5 flex items-center justify-center mr-3 mt-0.5 flex-shrink-0">3</span>
                   <span className="text-gray-700">You prefer premium, customized finishes</span>
                 </li>
               </ul>
             </div>
           </div>
+          
         </div>
+         <div className="mt-12 text-center">
+          <Link to={'/window-options'}>
+            <button className="bg-black text-white px-8 py-3 rounded-lg font-medium hover:bg-gray-800 transition-colors">
+              Buy Now
+            </button>
+          </Link>
+        </div>
+       
       </div>
     </div>
   );

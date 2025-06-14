@@ -1,5 +1,6 @@
 import React, { useRef, useState } from 'react';
 import dummyVideo from "../assets/dummy.mp4";
+import { Link } from 'react-router-dom';
 
 const WindowPrice = () => {
   // Video chapter navigation
@@ -86,7 +87,7 @@ const WindowPrice = () => {
           </p>
 
           {/* Video Chapters */}
-          <div className="mt-8">
+          {/* <div className="mt-8">
             <h2 className="text-lg font-medium text-black mb-4 tracking-tight">
               KEY MOMENTS
             </h2>
@@ -140,7 +141,7 @@ const WindowPrice = () => {
                 </div>
               ))}
             </div>
-          </div>
+          </div> */}
         </section>
 
         {/* Pricing Factors Section */}
@@ -190,9 +191,10 @@ const WindowPrice = () => {
             Our window specialists will provide a detailed quote tailored to your
             specific requirements and property characteristics.
           </p>
+          <Link to={'/window-options'}>
           <button className="bg-black text-white px-8 py-3 rounded-lg font-medium hover:bg-gray-800 transition-colors">
-            Request Custom Quote
-          </button>
+            Buy Now
+          </button></Link>
         </section>
       </div>
     </div>

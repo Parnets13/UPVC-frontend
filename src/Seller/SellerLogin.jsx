@@ -19,28 +19,29 @@ const SellerLogin = () => {
   };
 
   const handleSkip = () => {
-    navigate('/Sellerhome');
+    navigate('/lead');
   };
-   const handleregister = () => {
+
+  const handleregister = () => {
     navigate('/SellerForm');
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-green-50 flex items-center justify-center px-4">
+    <div className="min-h-screen bg-white flex items-center justify-center px-4">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
-        className="max-w-md w-full bg-white rounded-xl shadow-lg overflow-hidden"
+        className="max-w-md w-full bg-white border border-gray-300 rounded-xl shadow-md overflow-hidden"
       >
-        <div className="bg-gradient-to-r from-blue-500 to-[#4682C4] p-6 text-center">
+        <div className="bg-black p-6 text-center">
           <h1 className="text-2xl font-bold text-white">Welcome Buyer</h1>
-          <p className="text-blue-100 mt-2">Please enter your details</p>
+          <p className="text-gray-300 mt-2">Please enter your details</p>
         </div>
 
         <div className="p-6 md:p-8 space-y-6">
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">
+            <label className="block text-sm font-medium text-gray-800 mb-1">
               Full Name
             </label>
             <input
@@ -51,12 +52,12 @@ const SellerLogin = () => {
                 setError('');
               }}
               placeholder="Enter your name"
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full px-4 py-2 border border-gray-400 rounded-lg focus:outline-none focus:ring-2 focus:ring-black"
             />
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">
+            <label className="block text-sm font-medium text-gray-800 mb-1">
               Mobile Number
             </label>
             <input
@@ -68,7 +69,7 @@ const SellerLogin = () => {
               }}
               placeholder="Enter 10-digit mobile number"
               maxLength={10}
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full px-4 py-2 border border-gray-400 rounded-lg focus:outline-none focus:ring-2 focus:ring-black"
               inputMode="numeric"
             />
           </div>
@@ -79,20 +80,21 @@ const SellerLogin = () => {
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
             onClick={handleSendOtp}
-            className="w-full py-3 bg-[#4682C4] hover:bg-[#3b72af] text-white font-semibold rounded-lg shadow-md transition duration-300"
+            className="w-full py-3 bg-black text-white font-semibold rounded-lg shadow-sm hover:bg-gray-900 transition duration-300"
           >
             Send OTP
           </motion.button>
-           <button
+
+          <button
             onClick={handleregister}
-            className="w-full mt-2 text-sm text-blue-600 hover:text-blue-800 font-medium"
+            className="w-full mt-2 text-sm text-black hover:underline font-medium"
           >
-            New User 
+            New User
           </button>
 
           <button
             onClick={handleSkip}
-            className="w-full mt-2 text-sm text-blue-600 hover:text-blue-800 font-medium"
+            className="w-full mt-2 text-sm text-black hover:underline font-medium"
           >
             Skip & Continue Without OTP
           </button>

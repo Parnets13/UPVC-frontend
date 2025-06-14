@@ -1,23 +1,5 @@
 import React, { useState } from 'react';
 import NavTab from '../components/NavTab';
-productDetails: [
-  {
-    title: "uPVC Window",
-    color: "White",
-    location: "Mumbai",
-    size: 5, // in sq ft or any unit
-    quantity: 20,
-    remarks: "Urgent delivery"
-  },
-  {
-    title: "uPVC Door",
-    color: "Grey",
-    location: "Mumbai",
-    size: 6,
-    quantity: 10,
-    remarks: "Standard order"
-  }
-]
 
 const historyCards = [
   {
@@ -31,6 +13,7 @@ const historyCards = [
         contact: "+91 9876543210",
         whatsapp: "+91 9876543210",
         videoUrl: "https://www.w3schools.com/html/mov_bbb.mp4",
+        visitingCardImage: "https://via.placeholder.com/300x150.png?text=Visiting+Card",
         details: {
           address: "Veka India HQ, Gurugram",
           businessYears: "12 years",
@@ -49,6 +32,7 @@ const historyCards = [
         contact: "+91 9000000001",
         whatsapp: "+91 9000000001",
         videoUrl: "",
+        visitingCardImage: "https://via.placeholder.com/300x150.png?text=Visiting+Card",
         details: {
           address: "Jaipur HQ",
           businessYears: "6 years",
@@ -75,6 +59,7 @@ const historyCards = [
         contact: "+91 8765432109",
         whatsapp: "+91 8765432109",
         videoUrl: "https://www.w3schools.com/html/mov_bbb.mp4",
+        visitingCardImage: "https://via.placeholder.com/300x150.png?text=Visiting+Card",
         details: {
           address: "Green Heights, Noida",
           businessYears: "8 years",
@@ -93,6 +78,7 @@ const historyCards = [
         contact: "+91 9000000001",
         whatsapp: "+91 9000000001",
         videoUrl: "",
+        visitingCardImage: "https://via.placeholder.com/300x150.png?text=Visiting+Card",
         details: {
           address: "Jaipur HQ",
           businessYears: "6 years",
@@ -125,7 +111,6 @@ const HistoryPage = () => {
       const newIndex = direction === 'prev' 
         ? (currentIndex > 0 ? currentIndex - 1 : card.people.length - 1)
         : (currentIndex < card.people.length - 1 ? currentIndex + 1 : 0);
-      
       return { ...prev, [cardId]: newIndex };
     });
   };
@@ -133,33 +118,29 @@ const HistoryPage = () => {
   return (
     <div className="flex flex-col min-h-screen mt-24">
       <NavTab />
-      
+
       <div className="flex-grow bg-gray-100">
         <div className="container mx-auto px-4 py-8">
-          {/* Header */}
-          <div className="flex justify-center items-center mb-8 p-4 bg-black rounded-lg shadow-lg">
+          {/* <div className="flex justify-center items-center mb-8 p-4 bg-black rounded-lg shadow-lg">
             <h1 className="text-2xl font-bold text-white">History</h1>
-          </div>
+          </div> */}
 
-          {/* History Cards */}
           <div className="flex flex-wrap justify-center gap-6">
             {historyCards.map((card) => {
               const currentPersonIndex = currentPersonIndices[card.id];
               const person = card.people[currentPersonIndex];
-              
+
               return (
                 <div
                   key={card.id}
                   className="bg-white rounded-lg shadow-lg overflow-hidden border border-gray-200 w-full max-w-2xl"
                 >
-                  {/* Card Header */}
                   <div className="p-4 bg-gray-50">
                     <h2 className="text-lg font-bold text-gray-900">{card.name}</h2>
                     <p className="text-gray-600 mt-1">{card.date}</p>
                     <p className="text-gray-600">{card.address}</p>
                   </div>
 
-                  {/* Person Details */}
                   <div className="p-4">
                     <div className="mb-4">
                       <div className="p-3 bg-gray-50 rounded-lg border border-gray-200">
@@ -176,7 +157,7 @@ const HistoryPage = () => {
                             </video>
                           </div>
                         )}
-                        
+
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                           <div className="space-y-3">
                             <div className="bg-gray-50 p-3 rounded-lg">
@@ -184,24 +165,31 @@ const HistoryPage = () => {
                               <p className="text-gray-700 text-sm"><span className="font-medium">WhatsApp:</span> {person.whatsapp}</p>
                               <p className="text-gray-700 text-sm"><span className="font-medium">Address:</span> {person.details.address}</p>
                             </div>
-                            
+
+                            {person.visitingCardImage && (
+                              <div className="bg-gray-50 p-3 rounded-lg">
+                                <h4 className="font-bold text-gray-900 mb-2 text-sm">Visiting Card</h4>
+                                <img 
+                                  src={person.visitingCardImage}
+                                  alt={`${person.name} Visiting Card`} 
+                                  className="w-full max-w-xs rounded border border-gray-300 shadow"
+                                />
+                              </div>
+                            )}
+                          </div>
+
+                          <div className="space-y-3">
                             <div className="bg-gray-50 p-3 rounded-lg">
                               <h4 className="font-bold text-gray-900 mb-2 text-sm">Business Details</h4>
                               <p className="text-gray-700 text-sm"><span className="font-medium">Years in Business:</span> {person.details.businessYears}</p>
                               <p className="text-gray-700 text-sm"><span className="font-medium">Capacity:</span> {person.details.capacity}</p>
                               <p className="text-gray-700 text-sm"><span className="font-medium">Team Size:</span> {person.details.teamSize}</p>
                             </div>
-                          </div>
-                          
-                          <div className="space-y-3">
-                            <div className="bg-gray-50 p-3 rounded-lg">
-                              <h4 className="font-bold text-gray-900 mb-2 text-sm">Facility</h4>
-                              <p className="text-gray-700 text-sm"><span className="font-medium">Plant Area:</span> {person.details.plantArea}</p>
-                              <p className="text-gray-700 text-sm"><span className="font-medium">Certifications:</span> {person.details.certifications}</p>
-                            </div>
-                            
+
                             <div className="bg-gray-50 p-3 rounded-lg">
                               <h4 className="font-bold text-gray-900 mb-2 text-sm">Operations</h4>
+                              <p className="text-gray-700 text-sm"><span className="font-medium">Plant Area:</span> {person.details.plantArea}</p>
+                              <p className="text-gray-700 text-sm"><span className="font-medium">Certifications:</span> {person.details.certifications}</p>
                               <p className="text-gray-700 text-sm"><span className="font-medium">Main Product:</span> {person.details.mainProduct}</p>
                               <p className="text-gray-700 text-sm"><span className="font-medium">Delivery Time:</span> {person.details.deliveryTime}</p>
                               <p className="text-gray-700 text-sm"><span className="font-medium">Regions Covered:</span> {person.details.regionsCovered}</p>
@@ -212,7 +200,6 @@ const HistoryPage = () => {
                       </div>
                     </div>
 
-                    {/* Navigation Arrows */}
                     {card.people.length > 1 && (
                       <div className="flex justify-center space-x-4 mt-4">
                         <button 
@@ -223,11 +210,9 @@ const HistoryPage = () => {
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
                           </svg>
                         </button>
-                        
                         <div className="flex items-center text-gray-700 text-sm">
                           {currentPersonIndex + 1} / {card.people.length}
                         </div>
-                        
                         <button 
                           onClick={() => navigatePerson('next', card.id)}
                           className="flex items-center justify-center p-2 bg-black text-white rounded-full shadow hover:bg-gray-800 transition"
