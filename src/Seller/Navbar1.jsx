@@ -11,6 +11,7 @@ const Navbar1 = () => {
   const navItems = [
     { path: '/Sellerhome', label: 'Home', icon: <FiHome className="text-lg" /> },
     { path: '/lead', label: 'Leads', icon: <FiUsers className="text-lg" /> },
+     { path: '/upload', label: 'Upload Video', icon: <FiHome className="text-lg" /> },
     { path: '/insight', label: 'Insights', icon: <FiPieChart className="text-lg" /> },
     { path: '/SellerAccountPage', label: 'Account', icon: <FiUser className="text-lg" /> }
   ];

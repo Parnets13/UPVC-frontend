@@ -1,187 +1,128 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import { motion } from 'framer-motion';
-import { FiPlus, FiEdit, FiShoppingBag, FiCheckCircle, FiClock, FiHeadphones, FiMapPin, FiTag, FiHeart, FiStar, FiCreditCard } from 'react-icons/fi';
+import React, { useState } from "react";
+import { FaStar } from "react-icons/fa";
+import { FiEdit, FiLogOut } from "react-icons/fi";
 
-const BuyerAccountPage = () => {
-  // Sample data for buyer
-  const userProfile = {
-    name: "John Doe",
-    email: "john.doe@example.com",
-    joinDate: "Member since January 2023",
-    avatar: "https://randomuser.me/api/portraits/men/1.jpg"
-  };
-
-  const orderStats = {
-    totalOrders: 15,
-    completed: 12,
-    inProgress: 3
-  };
-
-  const savedAddresses = [
-    "Home: 123 Main St, Mumbai",
-    "Office: 456 Business Park, Bangalore"
-  ];
-
-  const wishlistItems = 8;
-  const reviewsGiven = 5;
+const AccountPage = () => {
+  const [rating, setRating] = useState(0);
+  const [hover, setHover] = useState(null);
+  const [feedback, setFeedback] = useState("");
 
   return (
-    <div className="min-h-screen bg-gray-50 pt-16 pb-20 md:pb-16 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-4xl mx-auto">
-        {/* Profile Header */}
-        <div className="flex flex-col md:flex-row items-start md:items-center gap-6 mb-8">
-          <div className="relative">
-            <img 
-              src={userProfile.avatar} 
-              alt="Profile" 
-              className="w-24 h-24 rounded-full object-cover border-4 border-white shadow-md"
-            />
-            <button className="absolute bottom-0 right-0 bg-blue-600 text-white p-2 rounded-full shadow-sm hover:bg-blue-700 transition-colors">
-              <FiEdit className="text-sm" />
-            </button>
-          </div>
-          <div>
-            <h1 className="text-2xl font-bold text-gray-900">{userProfile.name}</h1>
-            <p className="text-gray-600 mb-1">{userProfile.email}</p>
-            <p className="text-gray-500 text-sm">{userProfile.joinDate}</p>
-          </div>
-        </div>
+    <div className="max-w-6xl mx-auto p-4 font-sans mt-24">
+      {/* Flex container for two columns */}
+      <div className="flex flex-col lg:flex-row gap-6">
+        {/* Left Column */}
+        <div className="flex-1 space-y-6">
+          {/* Profile Information Card */}
+          <div className="bg-white p-5 rounded-xl shadow border">
+            <div className="flex justify-between items-center mb-3">
+              <h3 className="font-bold text-sm">PROFILE INFORMATION</h3>
+              <FiEdit className="text-lg cursor-pointer" />
+            </div>
 
-        {/* Order Statistics */}
-        <div className="bg-white rounded-xl shadow-sm p-6 mb-8">
-          <h2 className="text-xl font-semibold text-gray-900 mb-4 flex items-center gap-2">
-            <FiShoppingBag className="text-blue-600" /> Your Orders
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            <div className="bg-blue-50 p-4 rounded-lg">
-              <h3 className="text-sm font-medium text-gray-500 mb-1">Total Orders</h3>
-              <p className="text-2xl font-bold text-gray-900">{orderStats.totalOrders}</p>
-            </div>
-            <div className="bg-green-50 p-4 rounded-lg">
-              <h3 className="text-sm font-medium text-gray-500 mb-1">Completed</h3>
-              <p className="text-2xl font-bold text-gray-900">{orderStats.completed}</p>
-            </div>
-            <div className="bg-yellow-50 p-4 rounded-lg">
-              <h3 className="text-sm font-medium text-gray-500 mb-1">In Progress</h3>
-              <p className="text-2xl font-bold text-gray-900">{orderStats.inProgress}</p>
-            </div>
-          </div>
-        </div>
-
-        {/* Saved Addresses */}
-        <div className="bg-white rounded-xl shadow-sm p-6 mb-8">
-          <div className="flex justify-between items-center mb-4">
-            <h2 className="text-xl font-semibold text-gray-900 flex items-center gap-2">
-              <FiMapPin className="text-green-600" /> Saved Addresses
-            </h2>
-            <button className="text-blue-600 text-sm font-medium hover:text-blue-700">
-              Add New
-            </button>
-          </div>
-          <div className="space-y-3">
-            {savedAddresses.map((address, index) => (
-              <div key={index} className="flex justify-between items-start p-3 border-b border-gray-100 last:border-0">
-                <span className="text-gray-800">{address}</span>
-                <div className="flex gap-2">
-                  <button className="text-blue-600 hover:text-blue-800 p-1">
-                    <FiEdit className="text-sm" />
-                  </button>
-                  <button className="text-red-600 hover:text-red-800 p-1">
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
-                    </svg>
-                  </button>
-                </div>
+            <div className="mb-4">
+              <label className="text-xs text-gray-500">Full Name</label>
+              <div className="w-full p-2 bg-gray-100 rounded-md text-sm mt-1">
+                John Doe
               </div>
-            ))}
-          </div>
-        </div>
+            </div>
 
-        {/* Wishlist and Reviews */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-          <div className="bg-white rounded-xl shadow-sm p-6">
-            <h2 className="text-xl font-semibold text-gray-900 mb-4 flex items-center gap-2">
-              <FiHeart className="text-red-600" /> Wishlist
-            </h2>
-            <div className="flex items-center justify-between">
-              <p className="text-gray-700">{wishlistItems} items saved</p>
-              <Link to="/wishlist" className="text-blue-600 text-sm font-medium hover:text-blue-700">
-                View All
-              </Link>
+            <div>
+              <label className="text-xs text-gray-500">Phone Number</label>
+              <div className="w-full p-2 bg-gray-100 rounded-md text-sm mt-1">
+                +91 9876543210
+              </div>
             </div>
           </div>
-          
-          <div className="bg-white rounded-xl shadow-sm p-6">
-            <h2 className="text-xl font-semibold text-gray-900 mb-4 flex items-center gap-2">
-              <FiStar className="text-yellow-600" /> Your Reviews
-            </h2>
-            <div className="flex items-center justify-between">
-              <p className="text-gray-700">{reviewsGiven} reviews given</p>
-              <Link to="/reviews" className="text-blue-600 text-sm font-medium hover:text-blue-700">
-                View All
-              </Link>
-            </div>
-          </div>
-        </div>
 
-        {/* Payment Methods */}
-        <div className="bg-white rounded-xl shadow-sm p-6 mb-8">
-          <div className="flex justify-between items-center mb-4">
-            <h2 className="text-xl font-semibold text-gray-900 flex items-center gap-2">
-              <FiCreditCard className="text-purple-600" /> Payment Methods
-            </h2>
-            <button className="text-blue-600 text-sm font-medium hover:text-blue-700">
-              Add New
+          {/* Feedback Card */}
+          <div className="bg-white p-6 rounded-xl shadow border">
+            <h2 className="text-lg font-bold">FEEDBACK</h2>
+            <p className="mt-2 text-sm font-medium">
+              On a scale of 1 - 5 how would you rate us?
+            </p>
+
+            <div className="flex justify-center mt-4">
+              {[...Array(5)].map((_, index) => {
+                const starValue = index + 1;
+                return (
+                  <label key={index}>
+                    <input
+                      type="radio"
+                      name="rating"
+                      value={starValue}
+                      className="hidden"
+                      onClick={() => setRating(starValue)}
+                    />
+                    <FaStar
+                      size={28}
+                      className="cursor-pointer transition-colors"
+                      color={starValue <= (hover || rating) ? "#FFD700" : "#E5E7EB"}
+                      onMouseEnter={() => setHover(starValue)}
+                      onMouseLeave={() => setHover(null)}
+                    />
+                  </label>
+                );
+              })}
+            </div>
+
+            <p className="mt-4 italic font-semibold text-center text-sm">
+              PLEASE SHARE YOUR INPUTS IF YOU THINK WE NEED TO DO SOMETHING BETTER
+            </p>
+
+            <textarea
+              placeholder="Your valuable feedback here..."
+              maxLength={500}
+              rows={4}
+              value={feedback}
+              onChange={(e) => setFeedback(e.target.value)}
+              className="w-full mt-4 p-3 border rounded-lg resize-none text-sm"
+            ></textarea>
+
+            <div className="text-right text-xs text-gray-500">
+              {feedback.length}/500 characters
+            </div>
+
+            <button className="w-full mt-4 bg-black text-white py-2 rounded-md font-semibold">
+              SUBMIT FEEDBACK
             </button>
           </div>
-          <div className="text-gray-500 text-sm">
-            You haven't saved any payment methods yet.
-          </div>
         </div>
 
-        {/* Quick Actions */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
-          <motion.button
-            whileHover={{ y: -2 }}
-            className="bg-white p-4 rounded-lg shadow-sm text-center hover:bg-gray-50"
-          >
-            <div className="bg-blue-100 text-blue-600 w-10 h-10 rounded-full flex items-center justify-center mx-auto mb-2">
-              <FiCheckCircle className="text-lg" />
-            </div>
-            <span className="text-sm font-medium">Order History</span>
-          </motion.button>
-          <motion.button
-            whileHover={{ y: -2 }}
-            className="bg-white p-4 rounded-lg shadow-sm text-center hover:bg-gray-50"
-          >
-            <div className="bg-yellow-100 text-yellow-600 w-10 h-10 rounded-full flex items-center justify-center mx-auto mb-2">
-              <FiClock className="text-lg" />
-            </div>
-            <span className="text-sm font-medium">Track Order</span>
-          </motion.button>
-          <motion.button
-            whileHover={{ y: -2 }}
-            className="bg-white p-4 rounded-lg shadow-sm text-center hover:bg-gray-50"
-          >
-            <div className="bg-green-100 text-green-600 w-10 h-10 rounded-full flex items-center justify-center mx-auto mb-2">
-              <FiHeadphones className="text-lg" />
-            </div>
-            <span className="text-sm font-medium">Support</span>
-          </motion.button>
-          <motion.button
-            whileHover={{ y: -2 }}
-            className="bg-white p-4 rounded-lg shadow-sm text-center hover:bg-gray-50"
-          >
-            <div className="bg-purple-100 text-purple-600 w-10 h-10 rounded-full flex items-center justify-center mx-auto mb-2">
-              <FiEdit className="text-lg" />
-            </div>
-            <span className="text-sm font-medium">Edit Profile</span>
-          </motion.button>
+        {/* Right Column */}
+        <div className="w-full lg:w-1/3 space-y-6">
+          {/* Terms & Conditions Card */}
+          <div className="bg-white p-5 rounded-xl shadow border">
+            <h3 className="font-bold text-sm">TERMS & CONDITIONS</h3>
+            <p className="text-sm mt-2 text-gray-700">
+              By using our services, you agree to our terms and conditions. Please
+              read them carefully to understand your rights and responsibilities.
+            </p>
+            <button className="text-right text-black font-bold text-sm mt-3 flex items-center gap-1">
+              VIEW FULL TERMS <span>&rarr;</span>
+            </button>
+          </div>
+
+          {/* About Us Card */}
+          <div className="bg-white p-5 rounded-xl shadow border">
+            <h3 className="font-bold text-sm">ABOUT US</h3>
+            <p className="text-sm mt-2 text-gray-700">
+              We are committed to providing premium services with unmatched quality.
+              Our team works tirelessly to ensure your complete satisfaction.
+            </p>
+            <button className="text-right text-black font-bold text-sm mt-3 flex items-center gap-1">
+              LEARN MORE <span>&rarr;</span>
+            </button>
+          </div>
+
+          {/* Logout Button */}
+          <button className="w-full border border-black py-2 rounded-lg font-bold flex items-center justify-center gap-2">
+            LOGOUT <FiLogOut />
+          </button>
         </div>
       </div>
     </div>
   );
 };
 
-export default BuyerAccountPage;
+export default AccountPage;

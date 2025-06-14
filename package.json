@@ -22,8 +22,12 @@
     "react-dom": "^19.0.0",
     "react-icons": "^5.5.0",
     "react-router-dom": "^7.5.1",
+<<<<<<< HEAD
     "tailwind-merge": "^3.3.0",
     "tailwindcss-animate": "^1.0.7"
+=======
+    "swiper": "^11.2.8"
+>>>>>>> be46dce6607c28f572cd3e0f9b0dd8c396efc84e
   },
   "devDependencies": {
     "@eslint/js": "^9.22.0",

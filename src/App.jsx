@@ -27,6 +27,7 @@ import Leads from './Buyer/Leads.jsx';
 import Lead from './Seller/Lead.jsx';
 import SellerAccountPage from './Seller/SellerAccountPage.jsx';
 import Forrer from './Seller/Forrer';
+<<<<<<< HEAD
 import Admin from './components/Admin/Admin'
 import Dashboard from './components/Admin/Dashboard'
 import Banner from './components/Admin/Buyer/Banner.jsx';
@@ -47,6 +48,19 @@ import LogIn from './components/Admin/LogIn.jsx';
 import './App.css';
 
 
+=======
+import WindowPrice from './Buyer/WindowPrice.jsx';
+import WindowOptions from './Buyer/WindowOptions.jsx';
+import WhiteVsColor from './Buyer/WhiteVsColor.jsx';
+import TheProcess from './Buyer/TheProcess.jsx';
+import Category from './Buyer/Category.jsx';
+import HistoryPage from './Buyer/HistoryPage.jsx';
+import BuyerLogin from './Buyer/BuyerLogin.jsx';
+import NavTab from './components/NavTab.jsx';
+import SelectionPage from './Buyer/SelectionPage.jsx';
+import UploadVideo from './Seller/UploadVideo.jsx';
+import SellerLogin from './Seller/SellerLogin.jsx';
+>>>>>>> be46dce6607c28f572cd3e0f9b0dd8c396efc84e
 
 
 
@@ -64,6 +78,31 @@ export default function App() {
           <Route path="/" element={<Main />} />
           <Route path="/buyerForm" element={<BuyerForm />} />
           <Route path="/otp-verification" element={<OTPVerification />} />
+<<<<<<< HEAD
+=======
+          <Route path='/buyer-login' element={<BuyerLogin/>}/>
+          <Route path='/navtab' element={<NavTab/>}/>
+        
+      
+        
+       
+        <Route path="/" element={<Layout />}>
+          <Route path="/home" element={<Home />} />
+          <Route path='/category' element={<Category/>}/>
+          <Route path='select' element={<SelectionPage/>}/>
+          <Route path='/history' element={<HistoryPage/>}/>
+          
+          <Route path="/seller-responses" element={<SellerResponses />} />
+          <Route path="/contact-sellers" element={<ContactSellers />} />
+          <Route path='/Insights' element={<InsightsAdsPage/>} />
+          <Route path='/account'element={<AccountPage />} />
+          <Route path='/window-price' element={<WindowPrice/>}/>
+          <Route path='/window-options' element={<WindowOptions/>}/>
+          <Route path='/white/color' element={<WhiteVsColor/>}/>
+          <Route path='/process' element={<TheProcess/>}/>
+
+          
+>>>>>>> be46dce6607c28f572cd3e0f9b0dd8c396efc84e
 
 
 
@@ -83,13 +122,24 @@ export default function App() {
           <Route path="/SellerForm" element={<SellerForm />} />
           <Route path='/SellerOTPVerification' element={<SellerOTPVerification />} />
           <Route path="/SellerPendingApproval" element={<SellerPendingApproval />} />
+          <Route path='/SellerLogin' element={<SellerLogin/>}/>
           <Route element={<WithNavbar />}>
+<<<<<<< HEAD
             <Route path="/Sellerhome" element={<Sellerhome />} />
             <Route path='/SellerLeadDetails' element={<SellerLeadDetails />} />
             <Route path='/SellerContactBuyer' element={<SellerContactBuyer />} />
             <Route path='/lead' element={<Lead />} />
             <Route path='/insight' element={<InsightsAds />} />
             <Route path='/SellerAccountPage' element={<SellerAccountPage />} />
+=======
+          <Route path="/Sellerhome" element={<Sellerhome />} />
+          <Route path='/upload' element={<UploadVideo/>}/>
+          <Route path='/SellerLeadDetails' element={<SellerLeadDetails />} />
+          <Route path='/SellerContactBuyer' element={<SellerContactBuyer />} />
+          <Route path='/lead' element={<Lead />} />
+          <Route path='/insight' element={<InsightsAds/>} />
+          <Route path='/SellerAccountPage' element={<SellerAccountPage/>} />
+>>>>>>> be46dce6607c28f572cd3e0f9b0dd8c396efc84e
           </Route>
 
 
