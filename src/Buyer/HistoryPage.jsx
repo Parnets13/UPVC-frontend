@@ -136,22 +136,22 @@ const HistoryPage = () => {
                   className="bg-white rounded-lg shadow-lg overflow-hidden border border-gray-200 w-full max-w-2xl"
                 >
                   <div className="p-4 bg-gray-50">
-                    <h2 className="text-lg font-bold text-gray-900">{card.name}</h2>
-                    <p className="text-gray-600 mt-1">{card.date}</p>
-                    <p className="text-gray-600">{card.address}</p>
+                    <h2 className="text-lg font-bold text-gray-900 font-poppins">{card.name}</h2>
+                    <p className="text-gray-600 mt-1 font-inter">{card.date}</p>
+                    <p className="text-gray-600 font-inter">{card.address}</p>
                   </div>
 
                   <div className="p-4">
                     <div className="mb-4">
                       <div className="p-3 bg-gray-50 rounded-lg border border-gray-200">
-                        <h3 className="font-bold text-md text-gray-900">{person.name}</h3>
-                        <p className="text-gray-600">{person.contact}</p>
+                        <h3 className="font-bold font-poppins text-md text-gray-900">{person.name}</h3>
+                        <p className="text-gray-600 font-inter">{person.contact}</p>
                       </div>
 
                       <div className="mt-4 p-4 bg-white rounded-lg border border-gray-200">
                         {person.videoUrl && (
                           <div className="mb-4">
-                            <video controls className="w-full rounded-lg shadow">
+                            <video controls className="w-full rounded-lg shadow font-inter">
                               <source src={person.videoUrl} type="video/mp4" />
                               Your browser does not support the video tag.
                             </video>
@@ -161,18 +161,18 @@ const HistoryPage = () => {
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                           <div className="space-y-3">
                             <div className="bg-gray-50 p-3 rounded-lg">
-                              <h4 className="font-bold text-gray-900 mb-2 text-sm">Contact Information</h4>
-                              <p className="text-gray-700 text-sm"><span className="font-medium">WhatsApp:</span> {person.whatsapp}</p>
-                              <p className="text-gray-700 text-sm"><span className="font-medium">Address:</span> {person.details.address}</p>
+                              <h4 className="font-bold font-poppins text-gray-900 mb-2 text-sm">Contact Information</h4>
+                              <p className="text-gray-700 text-sm font-inter"><span className="font-medium">WhatsApp:</span> {person.whatsapp}</p>
+                              <p className="text-gray-700 text-sm font-inter"><span className="font-medium">Address:</span> {person.details.address}</p>
                             </div>
 
                             {person.visitingCardImage && (
                               <div className="bg-gray-50 p-3 rounded-lg">
-                                <h4 className="font-bold text-gray-900 mb-2 text-sm">Visiting Card</h4>
+                                <h4 className="font-bold font-poppins text-gray-900 mb-2 text-sm">Visiting Card</h4>
                                 <img 
                                   src={person.visitingCardImage}
                                   alt={`${person.name} Visiting Card`} 
-                                  className="w-full max-w-xs rounded border border-gray-300 shadow"
+                                  className="w-full max-w-xs rounded border border-gray-300 shadow font-inter"
                                 />
                               </div>
                             )}
@@ -180,20 +180,20 @@ const HistoryPage = () => {
 
                           <div className="space-y-3">
                             <div className="bg-gray-50 p-3 rounded-lg">
-                              <h4 className="font-bold text-gray-900 mb-2 text-sm">Business Details</h4>
-                              <p className="text-gray-700 text-sm"><span className="font-medium">Years in Business:</span> {person.details.businessYears}</p>
-                              <p className="text-gray-700 text-sm"><span className="font-medium">Capacity:</span> {person.details.capacity}</p>
-                              <p className="text-gray-700 text-sm"><span className="font-medium">Team Size:</span> {person.details.teamSize}</p>
+                              <h4 className="font-bold font-poppins text-gray-900 mb-2 text-sm">Business Details</h4>
+                              <p className="text-gray-700 text-sm font-inter"><span className="font-medium">Years in Business:</span> {person.details.businessYears}</p>
+                              <p className="text-gray-700 text-sm font-inter"><span className="font-medium">Capacity:</span> {person.details.capacity}</p>
+                              <p className="text-gray-700 text-sm font-inter"><span className="font-medium">Team Size:</span> {person.details.teamSize}</p>
                             </div>
 
                             <div className="bg-gray-50 p-3 rounded-lg">
-                              <h4 className="font-bold text-gray-900 mb-2 text-sm">Operations</h4>
-                              <p className="text-gray-700 text-sm"><span className="font-medium">Plant Area:</span> {person.details.plantArea}</p>
-                              <p className="text-gray-700 text-sm"><span className="font-medium">Certifications:</span> {person.details.certifications}</p>
-                              <p className="text-gray-700 text-sm"><span className="font-medium">Main Product:</span> {person.details.mainProduct}</p>
-                              <p className="text-gray-700 text-sm"><span className="font-medium">Delivery Time:</span> {person.details.deliveryTime}</p>
-                              <p className="text-gray-700 text-sm"><span className="font-medium">Regions Covered:</span> {person.details.regionsCovered}</p>
-                              <p className="text-gray-700 text-sm"><span className="font-medium">Partners:</span> {person.details.partners}</p>
+                              <h4 className="font-bold font-poppins text-gray-900 mb-2 text-sm">Operations</h4>
+                              <p className="text-gray-700 text-sm font-inter"><span className="font-medium">Plant Area:</span> {person.details.plantArea}</p>
+                              <p className="text-gray-700 text-sm font-inter"><span className="font-medium">Certifications:</span> {person.details.certifications}</p>
+                              <p className="text-gray-700 text-sm font-inter"><span className="font-medium">Main Product:</span> {person.details.mainProduct}</p>
+                              <p className="text-gray-700 text-sm font-inter"><span className="font-medium">Delivery Time:</span> {person.details.deliveryTime}</p>
+                              <p className="text-gray-700 text-sm font-inter"><span className="font-medium">Regions Covered:</span> {person.details.regionsCovered}</p>
+                              <p className="text-gray-700 text-sm font-inter"><span className="font-medium">Partners:</span> {person.details.partners}</p>
                             </div>
                           </div>
                         </div>

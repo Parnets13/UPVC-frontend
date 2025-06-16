@@ -17,20 +17,20 @@ const AccountPage = () => {
           {/* Profile Information Card */}
           <div className="bg-white p-5 rounded-xl shadow border">
             <div className="flex justify-between items-center mb-3">
-              <h3 className="font-bold text-sm">PROFILE INFORMATION</h3>
+              <h3 className="font-bold font-poppins text-sm">PROFILE INFORMATION</h3>
               <FiEdit className="text-lg cursor-pointer" />
             </div>
 
             <div className="mb-4">
-              <label className="text-xs text-gray-500">Full Name</label>
+              <label className="text-xs font-inter text-gray-500">Full Name</label>
               <div className="w-full p-2 bg-gray-100 rounded-md text-sm mt-1">
                 John Doe
               </div>
             </div>
 
             <div>
-              <label className="text-xs text-gray-500">Phone Number</label>
-              <div className="w-full p-2 bg-gray-100 rounded-md text-sm mt-1">
+              <label className="text-xs font-inter text-gray-500">Phone Number</label>
+              <div className="w-full font-inter p-2 bg-gray-100 rounded-md text-sm mt-1">
                 +91 9876543210
               </div>
             </div>
@@ -38,8 +38,8 @@ const AccountPage = () => {
 
           {/* Feedback Card */}
           <div className="bg-white p-6 rounded-xl shadow border">
-            <h2 className="text-lg font-bold">FEEDBACK</h2>
-            <p className="mt-2 text-sm font-medium">
+            <h2 className="text-lg font-bold font-poppins">FEEDBACK</h2>
+            <p className="mt-2 text-sm font-medium font-inter">
               On a scale of 1 - 5 how would you rate us?
             </p>
 
@@ -67,7 +67,7 @@ const AccountPage = () => {
               })}
             </div>
 
-            <p className="mt-4 italic font-semibold text-center text-sm">
+            <p className="mt-4 italic font-semibold font-inter text-center text-sm">
               PLEASE SHARE YOUR INPUTS IF YOU THINK WE NEED TO DO SOMETHING BETTER
             </p>
 
@@ -80,11 +80,11 @@ const AccountPage = () => {
               className="w-full mt-4 p-3 border rounded-lg resize-none text-sm"
             ></textarea>
 
-            <div className="text-right text-xs text-gray-500">
+            <div className="text-right font-inter text-xs text-gray-500">
               {feedback.length}/500 characters
             </div>
 
-            <button className="w-full mt-4 bg-black text-white py-2 rounded-md font-semibold">
+            <button className="w-full mt-4 bg-black text-white py-2 rounded-md font-inter font-semibold">
               SUBMIT FEEDBACK
             </button>
           </div>
@@ -94,45 +94,45 @@ const AccountPage = () => {
         <div className="w-full lg:w-1/3 space-y-6">
           {/* Contact Us Card - New Addition */}
           <div className="bg-white p-5 rounded-xl shadow border">
-            <h3 className="font-bold text-sm">CONTACT US</h3>
+            <h3 className="font-bold font-poppins text-sm">CONTACT US</h3>
             <div className="space-y-3 mt-3">
               <div className="flex items-start gap-3">
                 <FaPhone className="text-gray-500 mt-1" />
                 <div>
-                  <p className="text-xs text-gray-500">Phone</p>
-                  <p className="text-sm font-medium">+1 (800) 123-4567</p>
+                  <p className="text-xs text-gray-500 font-inter">Phone</p>
+                  <p className="text-sm font-medium font-inter">+1 (800) 123-4567</p>
                 </div>
               </div>
               <div className="flex items-start gap-3">
                 <FaEnvelope className="text-gray-500 mt-1" />
                 <div>
-                  <p className="text-xs text-gray-500">Email</p>
-                  <p className="text-sm font-medium">support@example.com</p>
+                  <p className="text-xs text-gray-500 font-inter">Email</p>
+                  <p className="text-sm font-medium font-inter">support@example.com</p>
                 </div>
               </div>
               <div className="flex items-start gap-3">
                 <FaMapMarkerAlt className="text-gray-500 mt-1" />
                 <div>
-                  <p className="text-xs text-gray-500">Address</p>
-                  <p className="text-sm font-medium">123 Business St, Suite 100, San Francisco, CA 94107</p>
+                  <p className="text-xs text-gray-500 font-inter">Address</p>
+                  <p className="text-sm font-medium font-inter">123 Business St, Suite 100, San Francisco, CA 94107</p>
                 </div>
               </div>
             </div>
             <Link to={'/contact'}>
-            <button className="w-full mt-4 border border-black py-2 rounded-md font-semibold text-sm">
+            <button className="w-full mt-4 border border-black py-2 rounded-md font-semibold font-inter text-sm">
               SEND MESSAGE
             </button></Link>
           </div>
 
           {/* Terms & Conditions Card */}
           <div className="bg-white p-5 rounded-xl shadow border">
-            <h3 className="font-bold text-sm">TERMS & CONDITIONS</h3>
-            <p className="text-sm mt-2 text-gray-700">
+            <h3 className="font-bold font-poppins text-sm">TERMS & CONDITIONS</h3>
+            <p className="text-sm mt-2 text-gray-700 font-inter">
               By using our services, you agree to our terms and conditions. Please
               read them carefully to understand your rights and responsibilities.
             </p>
             <Link to={'/t&c'}>
-            <button className="text-right text-black font-bold text-sm mt-3 flex items-center gap-1">
+            <button className="text-right text-black font-bold font-inter text-sm mt-3 flex items-center gap-1">
               VIEW FULL TERMS <span>&rarr;</span>
             </button></Link>
           </div>
@@ -141,19 +141,19 @@ const AccountPage = () => {
           
           <div className="bg-white p-5 rounded-xl shadow border">
 
-            <h3 className="font-bold text-sm">ABOUT US</h3>
-            <p className="text-sm mt-2 text-gray-700">
+            <h3 className="font-bold text-sm font-poppins">ABOUT US</h3>
+            <p className="text-sm mt-2 text-gray-700 font-inter">
               We are committed to providing premium services with unmatched quality.
               Our team works tirelessly to ensure your complete satisfaction.
             </p>
             <Link to={'/about'}>
-            <button className="text-right text-black font-bold text-sm mt-3 flex items-center gap-1">
+            <button className="text-right text-black font-bold font-inter text-sm mt-3 flex items-center gap-1">
               LEARN MORE <span>&rarr;</span>
             </button></Link>
           </div>
 
           {/* Logout Button */}
-          <button className="w-full border border-black py-2 rounded-lg font-bold flex items-center justify-center gap-2">
+          <button className="w-full border border-black py-2 rounded-lg font-bold font-poppins flex items-center justify-center gap-2">
             LOGOUT <FiLogOut />
           </button>
         </div>

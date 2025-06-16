@@ -109,7 +109,7 @@ const CategoryCard = ({ category }) => {
       {/* Title + Description */}
       <div>
         <div className="text-center mb-6">
-          <h2 className="text-xl font-bold uppercase">{category.name}</h2>
+          <h2 className="text-xl font-bold font-poppins uppercase">{category.name}</h2>
           <p className="text-gray-600 mt-2 text-sm">{category.description}</p>
         </div>
 
@@ -198,7 +198,7 @@ export default function Category() {
         <NavTab/>
       {/* Page Heading */}
       <div className="text-center max-w-2xl mx-auto mb-10 mt-24">
-        <h1 className="text-2xl md:text-3xl font-bold uppercase mb-2">
+        <h1 className="text-2xl md:text-3xl font-bold font-poppins uppercase mb-2">
           Select Your Preferred Category
         </h1>
         <p className="text-gray-600 text-sm">

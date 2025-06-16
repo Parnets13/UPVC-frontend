@@ -87,11 +87,11 @@ const Home = () => {
         <>
           {/* Hero Section */}
           <section className="mb-8 text-center">
-            <h3 className="text-3xl font-bold tracking-tight text-black sm:text-4xl ">
+            <h3 className="font-poppins text-3xl font-bold tracking-tight text-black sm:text-4xl ">
               Buying uPVC Windows & Doors!
             </h3>
             <div className="mt-2 h-0.5 w-20 mb-2 bg-black mx-auto"></div>
-            <p className="text-gray-600 text-lg">
+            <p className="text-gray-600 font-inter text-lg">
              Watch this exclusive video on the entire process from extension of frames to installation, to understand what sets high-quality windows apart.
             </p>
           </section>
@@ -109,13 +109,13 @@ const Home = () => {
                 <source src={dummyVideo} type="video/mp4" />
               </video>
             </div>
-            <p className="text-center text-gray-500 text-sm mt-3">
+            <p className="text-center font-inter text-gray-500 text-sm mt-3">
               Experience the craftsmanship of our premium uPVC windows
             </p>
 
             {/* Chapters */}
             <div className="mt-8">
-              <h2 className="text-lg font-medium text-black mb-4 tracking-tight">
+              <h2 className="text-lg font-poppins  font-medium text-black mb-4 tracking-tight">
                 KEY MOMENTS
               </h2>
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
