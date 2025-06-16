@@ -125,6 +125,7 @@ export default function App() {
             <Route path='/SellerContactBuyer' element={<SellerContactBuyer />} />
             <Route path='/lead' element={<Lead />} />
             <Route path='/insight' element={<InsightsAds />} />
+            <Route path='/upload' element={<UploadVideo/>}/>
             <Route path='/SellerAccountPage' element={<SellerAccountPage />} />
           </Route>
 

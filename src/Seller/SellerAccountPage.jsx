@@ -270,9 +270,9 @@ const SellerAccountPage = () => {
             <h2 className="text-xl font-semibold text-gray-900 flex items-center gap-2">
               <FiUsers className="text-gray-700" /> Recent Leads
             </h2>
-            <Link to="/leads" className="text-gray-700 text-sm font-medium hover:text-gray-900">
+            {/* <Link to="/leads" className="text-gray-700 text-sm font-medium hover:text-gray-900">
               View All
-            </Link>
+            </Link> */}
           </div>
           <div className="overflow-x-auto">
             <table className="min-w-full divide-y divide-gray-200">
@@ -303,6 +303,7 @@ const SellerAccountPage = () => {
                         </span>
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                        <Link to={'/SellerContactBuyer'}>
                         <button 
                           onClick={() => toggleLeadDetails(lead.id)}
                           className="text-gray-700 hover:text-gray-900 flex items-center gap-1"
@@ -310,9 +311,10 @@ const SellerAccountPage = () => {
                           <FiEye className="text-sm" />
                           <span>View</span>
                         </button>
+                        </Link>
                       </td>
                     </tr>
-                    {expandedLead === lead.id && (
+                    {/* {expandedLead === lead.id && (
                       <tr>
                         <td colSpan="6" className="px-6 py-4 bg-gray-50">
                           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -329,7 +331,7 @@ const SellerAccountPage = () => {
                           </div>
                         </td>
                       </tr>
-                    )}
+                    )} */}
                   </React.Fragment>
                 ))}
               </tbody>

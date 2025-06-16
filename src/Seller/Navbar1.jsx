@@ -3,7 +3,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FiHome, FiUsers, FiPieChart, FiUser, FiMenu, FiX } from 'react-icons/fi';
 import { FaConnectdevelop } from 'react-icons/fa';
-
+import logo from "../assets/logo.png";
 const Navbar1 = () => {
   const location = useLocation();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -24,12 +24,15 @@ const Navbar1 = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-16 items-center">
           {/* Logo/Brand */}
-          <div className="flex-shrink-0 items-center">
-            <Link to="/Sellerhome" className="flex items-center space-x-2">
-              <FaConnectdevelop className="text-black text-2xl" />
-              <span className="text-xl font-bold text-black">UPVC Connect</span>
-            </Link>
-          </div>
+        <div className="flex-shrink-0">
+                   <Link to="/" className="flex items-center justify-start">
+                     <img
+                       src={logo}
+                       className="w-30 h-20 mt-2"
+                       alt="Logo"
+                     />
+                   </Link>
+                 </div>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-1">
