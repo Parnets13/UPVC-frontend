@@ -333,7 +333,7 @@ export default function SubOptions() {
                     <Dialog>
                         <DialogTrigger asChild>
                             <button
-                                className="px-4 h-8 bg-blue-600 text-white rounded-sm hover:bg-blue-700 transition-colors"
+                                className="px-4 h-8 bg-black text-white rounded-sm hover:bg-gray-800 transition-colors"
                                 aria-label="Add new banner"
                             >
                                 Add
@@ -352,7 +352,7 @@ export default function SubOptions() {
                                             </label>
                                             <input
                                                 type="text"
-                                                className="w-full h-10 px-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                                className="w-full h-10 px-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-black"
                                                 placeholder="Enter title"
                                             />
                                         </div>
@@ -374,7 +374,7 @@ export default function SubOptions() {
                                                 id="windowSelect"
                                                 value={selectedOption}
                                                 onChange={handleChange}
-                                                className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                                className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-black"
                                             >
                                                 <option value="" disabled>Select an option</option>
                                                 {windowOptions.map((opt, index) => (
@@ -396,7 +396,7 @@ export default function SubOptions() {
                                             </label>
                                             <input
                                                 type="text"
-                                                className="w-full h-10 px-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                                className="w-full h-10 px-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-black"
                                                 placeholder="Enter Features"
                                             />
                                         </div>
@@ -405,7 +405,7 @@ export default function SubOptions() {
                                         <div className="pt-4">
                                             <button
                                                 type="submit"
-                                                className="w-full hover:bg-gray-400 text-black font-semibold py-2 rounded-md bg-gray-100 transition-colors"
+                                                className="w-full hover:bg-gray-400 text-white font-semibold py-2 rounded-md bg-black transition-colors"
                                             >
                                                 Submit
                                             </button>

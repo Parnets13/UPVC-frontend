@@ -44,7 +44,7 @@ export default function Banner() {
             <DialogTrigger asChild>
               <button
                 onClick={handleAddBanner}
-                className="px-4 py-1 bg-blue-600 text-white rounded-sm hover:bg-blue-700 transition-colors"
+                className="px-4 py-1 bg-black text-white rounded-sm hover:bg-gray-700 transition-colors"
                 aria-label="Add new banner"
               >
                 Add
@@ -74,7 +74,7 @@ export default function Banner() {
                       </label>
                       <input
                         type="text"
-                        className="w-full h-10 px-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        className="w-full h-10 px-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-black"
                         placeholder="Enter title"
                       />
                     </div>
@@ -86,7 +86,7 @@ export default function Banner() {
                       </label>
                       <input
                         type="text"
-                        className="w-full h-10 px-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        className="w-full h-10 px-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-black"
                         placeholder="Enter description"
                       />
                     </div>
@@ -142,7 +142,7 @@ export default function Banner() {
                             <button
                               // onClick={() => handleEdit(video.id)}
                               aria-label={`Edit banner ${video.title}`}
-                              className="hover:text-blue-500 transition-colors"
+                              className="hover:text-black transition-colors"
                             >
                               <MdModeEditOutline />
                             </button>
@@ -171,7 +171,7 @@ export default function Banner() {
                                     </label>
                                     <input
                                       type="text"
-                                      className="w-full h-10 px-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                      className="w-full h-10 px-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-black"
                                       placeholder="Enter title"
                                     />
                                   </div>
@@ -183,7 +183,7 @@ export default function Banner() {
                                     </label>
                                     <input
                                       type="text"
-                                      className="w-full h-10 px-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                      className="w-full h-10 px-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-black"
                                       placeholder="Enter description"
                                     />
                                   </div>

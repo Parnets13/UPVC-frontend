@@ -62,7 +62,7 @@ export default function Prices() {
           <div className="flex mb-3">
             <Dialog>
               <DialogTrigger asChild>
-                <button className="bg-blue-600 text-white px-2 py-1 rounded-sm hover:bg-gray-300">
+                <button className="bg-black text-white px-2 py-1 rounded-sm hover:bg-gray-300">
                   Add
                 </button>
               </DialogTrigger>
@@ -84,7 +84,7 @@ export default function Prices() {
                         <label className="block text-sm font-medium text-gray-700 mb-1">Title</label>
                         <input
                           type="text"
-                          className="w-full h-10 px-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                          className="w-full h-10 px-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-black"
                           placeholder="Enter title"
                         />
                       </div>
@@ -94,7 +94,7 @@ export default function Prices() {
                         <label className="block text-sm font-medium text-gray-700 mb-1">Subtitle</label>
                         <input
                           type="text"
-                          className="w-full h-10 px-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                          className="w-full h-10 px-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-black"
                           placeholder="Enter Subtitle"
                         />
                       </div>
@@ -104,7 +104,7 @@ export default function Prices() {
                         <label className="block text-sm font-medium text-gray-700 mb-1">Description</label>
                         <input
                           type="text"
-                          className="w-full h-10 px-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                          className="w-full h-10 px-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-black"
                           placeholder="Enter description"
                         />
                       </div>
@@ -156,7 +156,7 @@ export default function Prices() {
                       {/* Edit Dialog */}
                       <Dialog>
                         <DialogTrigger asChild>
-                          <button className="hover:text-blue-500 transition-colors">
+                          <button className="hover:text-black transition-colors">
                             <MdModeEditOutline />
                           </button>
                         </DialogTrigger>
@@ -195,7 +195,7 @@ export default function Prices() {
             <Dialog>
               <DialogTrigger asChild>
                 <button
-                  className=" bg-blue-600 text-white px-2 py-1 rounded-sm hover:bg-gray-300"
+                  className=" bg-black text-white px-2 py-1 rounded-sm hover:bg-gray-300"
                 >
                   Add
                 </button>
@@ -215,7 +215,7 @@ export default function Prices() {
                         </label>
                         <input
                           type="text"
-                          className="w-full h-10 px-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                          className="w-full h-10 px-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-black"
                           placeholder="Enter title"
                         />
                       </div>
@@ -227,7 +227,7 @@ export default function Prices() {
                         </label>
                         <input
                           type="text"
-                          className="w-full h-10 px-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                          className="w-full h-10 px-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-black"
                           placeholder="Enter description"
                         />
                       </div>
@@ -271,7 +271,7 @@ export default function Prices() {
                         <DialogTrigger asChild>
                           <button
                             aria-label={`Edit banner ${video.title}`}
-                            className="hover:text-blue-500 transition-colors"
+                            className="hover:text-black transition-colors"
                           >
                             <MdModeEditOutline />
                           </button>
@@ -291,7 +291,7 @@ export default function Prices() {
                                   </label>
                                   <input
                                     type="text"
-                                    className="w-full h-10 px-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                    className="w-full h-10 px-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-black"
                                     placeholder="Enter title"
                                   />
                                 </div>
@@ -303,7 +303,7 @@ export default function Prices() {
                                   </label>
                                   <input
                                     type="text"
-                                    className="w-full h-10 px-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                    className="w-full h-10 px-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-black"
                                     placeholder="Enter description"
                                   />
                                 </div>

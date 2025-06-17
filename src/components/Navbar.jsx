@@ -42,14 +42,10 @@ const Navbar = () => {
     <nav className="fixed top-0 left-0 right-0 border-gray-200 z-50 bg-white shadow-sm">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-16 items-center">
-          {/* Logo/Brand */}
+          {/* Logo */}
           <div className="flex-shrink-0">
             <Link to="/" className="flex items-center justify-start">
-              <img
-                src={logo}
-                className="w-30 h-20 mt-2"
-                alt="Logo"
-              />
+              <img src={logo} className="w-30 h-20 mt-2" alt="Logo" />
             </Link>
           </div>
 
@@ -84,9 +80,9 @@ const Navbar = () => {
               ))}
             </div>
 
-            {/* Right Side Icons (Notification and Location) */}
+            {/* Right Side Icons */}
             <div className="flex items-center space-x-2 ml-12">
-              {/* Location Icon */}
+              {/* Location */}
               <div className="relative">
                 <button
                   onClick={toggleLocation}
@@ -94,7 +90,7 @@ const Navbar = () => {
                 >
                   <FiMapPin className="text-xl" />
                 </button>
-                {/* <AnimatePresence>
+                <AnimatePresence>
                   {locationOpen && (
                     <motion.div
                       initial={{ opacity: 0, y: 20 }}
@@ -111,10 +107,10 @@ const Navbar = () => {
                       </div>
                     </motion.div>
                   )}
-                </AnimatePresence> */}
+                </AnimatePresence>
               </div>
 
-              {/* Notification Icon */}
+              {/* Notifications */}
               <div className="relative">
                 <button
                   onClick={toggleNotifications}
@@ -123,7 +119,7 @@ const Navbar = () => {
                   <FiBell className="text-xl" />
                   <span className="absolute top-0 right-0 w-2 h-2 bg-red-500 rounded-full"></span>
                 </button>
-                {/* <AnimatePresence>
+                <AnimatePresence>
                   {notificationOpen && (
                     <motion.div
                       initial={{ opacity: 0, y: 20 }}
@@ -147,20 +143,13 @@ const Navbar = () => {
                       </div>
                     </motion.div>
                   )}
-                </AnimatePresence> */}
+                </AnimatePresence>
               </div>
             </div>
           </div>
 
           {/* Mobile Menu Button */}
           <div className="md:hidden flex items-center space-x-4">
-            <button
-              onClick={toggleNotifications}
-              className="p-2 rounded-full hover:bg-gray-100 text-gray-600 hover:text-black transition-colors relative"
-            >
-              <FiBell className="text-xl" />
-              <span className="absolute top-0 right-0 w-2 h-2 bg-red-500 rounded-full"></span>
-            </button>
             <button
               onClick={toggleMobileMenu}
               className="text-gray-700 hover:text-black focus:outline-none"
@@ -207,32 +196,12 @@ const Navbar = () => {
                 </Link>
               ))}
               {/* Mobile Location Option */}
-              <div 
+              <div
                 onClick={toggleLocation}
                 className="flex items-center space-x-3 px-4 py-3 text-gray-700 hover:bg-gray-50 cursor-pointer"
               >
                 <FiMapPin className="text-lg" />
                 <span className="font-medium">Location</span>
-              </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
-
-        {/* Mobile Location Dropdown */}
-        <AnimatePresence>
-          {locationOpen && (
-            <motion.div
-              initial={{ opacity: 0, y: -20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-              className="md:hidden bg-white shadow-lg rounded-lg mt-2 py-2 border border-gray-200"
-            >
-              <div className="px-4 py-2 font-medium text-gray-700">Your Location</div>
-              <div className="px-4 py-2 text-sm text-gray-600">
-                <p>Current: Mumbai, India</p>
-                <button className="mt-2 text-blue-600 text-sm font-medium">
-                  Change Location
-                </button>
               </div>
             </motion.div>
           )}

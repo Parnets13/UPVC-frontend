@@ -102,7 +102,7 @@ export default function Process() {
                     <div className='flex justify-end mb-3'>
                         <Dialog>
                             <DialogTrigger asChild>
-                                <button className="bg-blue-600 text-white px-3 py-1 font-semibold rounded hover:bg-blue-700 text-sm">
+                                <button className="bg-black text-white px-3 py-1 font-semibold rounded hover:bg-gray-700 text-sm">
                                     Add
                                 </button>
                             </DialogTrigger>
@@ -119,7 +119,7 @@ export default function Process() {
                                                     <input type="file" accept="video/*" className="w-full" />
                                                 </div>
                                             </div>
-                                            <button type="submit" className="w-full bg-blue-500 text-white py-2 rounded-md hover:bg-blue-600">
+                                            <button type="submit" className="w-full bg-black text-white py-2 rounded-md hover:bg-gray-600">
                                                 Submit
                                             </button>
                                         </form>
@@ -146,7 +146,7 @@ export default function Process() {
                                         <td className="p-3 flex items-center gap-2 text-lg text-gray-600">
                                             <Dialog>
                                                 <DialogTrigger asChild>
-                                                    <button className="hover:text-blue-500" title="Edit">
+                                                    <button className="hover:text-black" title="Edit">
                                                         <MdModeEditOutline />
                                                     </button>
                                                 </DialogTrigger>
@@ -163,7 +163,7 @@ export default function Process() {
                                                                         <input type="file" accept="video/*" className="w-full" />
                                                                     </div>
                                                                 </div>
-                                                                <button type="submit" className="w-full bg-blue-500 text-white py-2 rounded-md hover:bg-blue-600">
+                                                                <button type="submit" className="w-full bg-black text-white py-2 rounded-md hover:bg-gray-600">
                                                                     Submit
                                                                 </button>
                                                             </form>
@@ -186,7 +186,7 @@ export default function Process() {
                     <div className='flex justify-end mb-3'>
                         <Dialog>
                             <DialogTrigger asChild>
-                                <button className="bg-blue-600 text-white px-3 py-1 font-semibold rounded hover:bg-blue-700 text-sm">
+                                <button className="bg-black text-white px-3 py-1 font-semibold rounded hover:bg-gray-700 text-sm">
                                     Add
                                 </button>
                             </DialogTrigger>
@@ -210,7 +210,7 @@ export default function Process() {
                                                 <input
                                                     type="text"
                                                     name="description"
-                                                    className="w-full h-10 px-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                                    className="w-full h-10 px-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-black"
                                                     placeholder="Enter description"
                                                 />
                                             </div>
@@ -247,7 +247,7 @@ export default function Process() {
                                                 <DialogTrigger asChild>
                                                     <button
                                                         // onClick={() => handleEdit(video.id)}
-                                                        className="hover:text-blue-500"
+                                                        className="hover:text-black"
                                                         title="Edit"
                                                     >
                                                         <MdModeEditOutline />
@@ -273,7 +273,7 @@ export default function Process() {
                                                                     <input
                                                                         type="text"
                                                                         name="description"
-                                                                        className="w-full h-10 px-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                                                        className="w-full h-10 px-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-black"
                                                                         placeholder="Enter description"
                                                                     />
                                                                 </div>

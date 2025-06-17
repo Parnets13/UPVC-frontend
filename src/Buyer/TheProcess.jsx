@@ -1,71 +1,112 @@
 import { Link } from "react-router-dom";
+
 const TheProcess = () => {
   const steps = [
-    'Select your design, dimensions, and quantity',
-    'Submit your details',
-    'Your RFQ a (Requirment for quote) will be shared with machine curated window manufacturers (maximum 6 only)',
-    'The moment they generate interest, you will be notified ',
-    'You can get to see there business profile', 
-    'Sit back, relax & enjoy',
-    'Matching fabricators will connect, meet you, and gather measurements', 
-    'Compare quotes and place your order!',
-  ]
+    {
+      title: "Design Selection",
+      text: 'Choose your preferred design, dimensions, and quantity from our extensive catalog',
+      image: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80'
+    },
+    {
+      title: "Details Submission",
+      text: 'Provide your contact and project details through our secure form',
+      image: 'https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80'
+    },
+    {
+      title: "RFQ Distribution",
+      text: 'Your request will be shared with our network of pre-vetted window manufacturers (maximum 6)',
+      image: 'https://images.unsplash.com/photo-1521791136064-7986c2920216?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80'
+    },
+    {
+      title: "Instant Notifications",
+      text: 'Get real-time updates when manufacturers express interest in your project',
+      image: 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80'
+    },
+    {
+      title: "Profile Review", 
+      text: 'Access detailed business profiles of interested manufacturers', 
+      image: 'https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80'
+    },
+    {
+      title: "Relax & Wait",
+      text: 'Our team handles all coordination while you wait for responses',
+      image: 'https://images.unsplash.com/photo-1496417263034-38ec4f0b665a?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80'
+    },
+    {
+      title: "Professional Measurement", 
+      text: 'Selected fabricators will visit to take precise measurements', 
+      image: 'https://images.unsplash.com/photo-1581093450021-4a7360e9a7f1?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80'
+    },
+    {
+      title: "Order Placement",
+      text: 'Compare competitive quotes and finalize your order with confidence',
+      image: 'https://images.unsplash.com/photo-1556740738-b6a63e27c4df?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80'
+    },
+  ];
 
   return (
-    <div className="  px-4 mt-24 sm:px-6 lg:px-8 bg-white">
-      <div className="max-w-4xl mx-auto">
+    <div className="bg-gray-50 py-16 sm:py-24 px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16">
-          <h3 className="text-3xl font-light tracking-tight text-black sm:text-4xl">
-            Our <span className="font-medium">Seamless Process</span>
-          </h3>
-          <div className="mt-2 h-0.5 w-20 bg-black mx-auto"></div>
+          <h2 className="text-4xl font-bold font-poppins text-gray-900 sm:text-5xl">
+            Our <span className="text-black">Seamless</span> Process
+          </h2>
+          <p className="mt-4 text-xl text-gray-600 font-inter max-w-3xl mx-auto">
+            From selection to installation - we make window shopping simple and efficient
+          </p>
         </div>
 
         <div className="relative">
-          {/* Vertical line */}
-          <div className="hidden md:block absolute left-1/2 h-full w-px bg-gray-200 transform -translate-x-1/2"></div>
+          {/* Timeline bar */}
+          <div className="hidden lg:block absolute left-1/2 h-full w-1 bg-black transform -translate-x-1/2"></div>
           
           {/* Process steps */}
-          <div className="space-y-12 md:space-y-16">
-            {steps.map((step, index) => (
-              <div key={index} className="relative flex flex-col md:flex-row items-center">
-                {/* Circle with number (mobile) */}
-                <div className="md:hidden flex items-center justify-center w-10 h-10 rounded-full border-2 border-black bg-white text-black font-medium mb-4">
-                  {index + 1}
-                </div>
-                
-                {/* Content container */}
-                <div className={`w-full md:w-1/2 ${index % 2 === 0 ? 'md:pr-12 md:text-right' : 'md:pl-12'}`}>
-                  <div className="relative">
-                    {/* Circle with number (desktop) */}
-                    <div className="hidden md:flex absolute top-0 items-center justify-center w-8 h-8 rounded-full border-2 border-black bg-white text-black font-medium transform -translate-y-1/2" 
-                         style={index % 2 === 0 ? {right: '-4rem'} : {left: '-4rem'}}>
-                      {index + 1}
-                    </div>
-                    
-                    <div className={`p-6 border border-gray-200 rounded-none shadow-xs hover:shadow-sm transition-shadow duration-300 ${index % 2 === 0 ? 'md:mr-0' : 'md:ml-0'}`}>
-                      <div className="space-y-2">
-                        <div className="text-xs font-medium tracking-widest text-gray-500 uppercase">
-                          Step {index + 1}
-                        </div>
-                        <p className="text-lg font-light leading-relaxed text-black">
-                          {step}
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                
-                {/* Empty div for alternating sides */}
-                <div className={`hidden md:block w-1/2 ${index % 2 === 0 ? 'order-first' : ''}`}></div>
-              </div>
-            ))}
+          <div className="space-y-16 lg:space-y-20">
+            {steps.map((step, index) => {
+              const isEven = index % 2 === 0;
+              return (
+                <div key={index} className="relative flex flex-col lg:flex-row items-center gap-8 lg:gap-12">
+  {/* Text content */}
+  <div className={`w-full lg:w-1/2 ${isEven ? 'lg:order-1 lg:pr-12' : 'lg:order-2 lg:pl-12'} z-10`}>
+    <div className="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 border border-gray-100">
+      <div className="flex items-center mb-4">
+        <div className="flex items-center justify-center w-12 h-12 rounded-full bg-black text-white font-bold text-xl mr-4">
+          {index + 1}
+        </div>
+        <h3 className="text-2xl font-semibold font-poppins text-gray-900">{step.title}</h3>
+      </div>
+      <p className="text-lg text-gray-600 font-inter pl-16">{step.text}</p>
+    </div>
+  </div>
+
+  {/* Connector line */}
+  <div className="hidden lg:block absolute top-1/2 left-1/2 w-12 h-1 bg-black transform -translate-x-1/2 -translate-y-1/2 z-0"></div>
+
+  {/* Image content */}
+  <div className={`w-full lg:w-1/2 ${isEven ? 'lg:order-2 lg:pl-12' : 'lg:order-1 lg:pr-12'} z-10`}>
+    <div className="overflow-hidden rounded-xl shadow-lg transform hover:scale-[1.02] transition-transform duration-300">
+      <img 
+        src={step.image} 
+        alt={`Step ${index + 1}: ${step.title}`}
+        className="w-full h-64 lg:h-80 object-cover"
+        loading="lazy"
+      />
+    </div>
+  </div>
+</div>
+
+              );
+            })}
           </div>
         </div>
-         <div className="mt-12 text-center">
-          <Link to={'/window-options'}>
-            <button className="bg-black text-white px-8 py-3 rounded-lg font-medium hover:bg-gray-800 transition-colors">
-              Buy Now
+        
+        <div className="mt-16 text-center">
+          <Link to="/window-options" className="inline-block">
+            <button className="bg-black hover:bg-gray-900 text-white px-10 py-4 rounded-xl font-semibold text-lg shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1">
+              BUY NOW
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 inline-block ml-2" viewBox="0 0 20 20" fill="currentColor">
+                <path fillRule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" />
+              </svg>
             </button>
           </Link>
         </div>

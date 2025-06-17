@@ -55,7 +55,7 @@ export default function WindowOpt() {
           <Dialog>
             <DialogTrigger asChild>
               <button
-                className="px-4 py-1 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors"
+                className="px-4 py-1 bg-black text-white rounded-md hover:bg-gray-900 transition-colors"
                 aria-label="Add new window option"
               >
                 Add
@@ -76,7 +76,7 @@ export default function WindowOpt() {
                         type="text"
                         value={newOption}
                         onChange={(e) => setNewOption(e.target.value)}
-                        className="w-full h-10 px-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        className="w-full h-10 px-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-black"
                         placeholder="Enter Option"
                       />
                     </div>
@@ -116,7 +116,7 @@ export default function WindowOpt() {
                         <DialogTrigger asChild>
                           <button
                             onClick={() => handleEditClick(index)}
-                            className="hover:text-blue-600"
+                            className="hover:text-black"
                           >
                             <MdModeEditOutline />
                           </button>
@@ -136,14 +136,14 @@ export default function WindowOpt() {
                                     type="text"
                                     value={editValue}
                                     onChange={(e) => setEditValue(e.target.value)}
-                                    className="w-full h-10 px-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                    className="w-full h-10 px-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-black"
                                     placeholder="Enter Window Option"
                                   />
                                 </div>
                                 <div className="pt-4">
                                   <button
                                     type="submit"
-                                    className="w-full bg-gray-100 hover:bg-gray-200 text-black font-semibold py-2 rounded-md transition-colors"
+                                    className="w-full bg-black hover:bg-black text-black font-semibold py-2 rounded-md transition-colors"
                                   >
                                     Submit
                                   </button>

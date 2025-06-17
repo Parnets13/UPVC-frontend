@@ -126,7 +126,7 @@ export default function ProLeads() {
                   <td className="p-3  text-center">
                     <Dialog>
                       <DialogTrigger asChild>
-                        <button className="px-4 py-1 bg-indigo-600 text-white text-sm rounded hover:bg-indigo-700 transition">View</button>
+                        <button className="px-4 py-1 bg-black text-white text-sm rounded hover:bg-gray-700 transition">View</button>
                       </DialogTrigger>
                       <DialogContent className="max-w-md bg-white rounded-lg shadow-xl p-6">
                         <DialogHeader>
@@ -152,7 +152,7 @@ export default function ProLeads() {
                   <td className="p-3 text-center">
                     <Dialog>
                       <DialogTrigger asChild>
-                        <button className="px-4 py-1 bg-blue-600 text-white text-sm rounded hover:bg-blue-700 transition">
+                        <button className="px-4 py-1 bg-black text-white text-sm rounded hover:bg-gray-700 transition">
                           View
                         </button>
                       </DialogTrigger>
@@ -173,7 +173,7 @@ export default function ProLeads() {
                               </thead>
                               <tbody>
                                 {obj1.map((item, i) => (
-                                  <tr key={i} className="even:bg-gray-50 hover:bg-blue-50 transition">
+                                  <tr key={i} className="even:bg-gray-50 hover:bg-black transition">
                                     <td className="p-3 border-b">{item.name}</td>
                                     <td className="p-3 border-b">{item.color}</td>
                                     <td className="p-3 border-b">{item.location}</td>
@@ -195,7 +195,7 @@ export default function ProLeads() {
                   <td className="p-3 text-center">
                     <Dialog>
                       <DialogTrigger asChild>
-                        <button className="flex items-center gap-2 px-4 py-1 bg-green-600 text-white text-sm rounded hover:bg-green-700 transition">
+                        <button className="flex items-center gap-2 px-4 py-1 bg-black text-white text-sm rounded hover:bg-gray-700 transition">
                           {item.buy}/6 View
                         </button>
                       </DialogTrigger>

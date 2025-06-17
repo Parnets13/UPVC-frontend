@@ -32,11 +32,7 @@ export default function Dashboard() {
             transition={{ duration: 0.3, delay: 0.2 }}
             className="w-full sm:w-auto"
           >
-            <input
-              type="text"
-              placeholder="Search..."
-              className="w-full sm:w-64 px-4 py-2 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300"
-            />
+           
           </motion.div>
           <motion.div
             whileHover={{ scale: 1.05 }}

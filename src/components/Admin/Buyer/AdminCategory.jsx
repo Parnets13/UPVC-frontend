@@ -75,7 +75,7 @@ export default function AdminCategory() {
           <Dialog>
             <DialogTrigger asChild>
               <button
-                className="px-4 py-1 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors"
+                className="px-4 py-1 bg-black text-white rounded-md hover:bg-gray-700 transition-colors"
                 aria-label="Add new window option"
               >
                 Add
@@ -92,7 +92,7 @@ export default function AdminCategory() {
                         type="text"
                         value={newName}
                         onChange={(e) => setNewName(e.target.value)}
-                        className="w-full h-10 px-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        className="w-full h-10 px-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-black"
                         placeholder="Enter Category Name"
                         required
                       />
@@ -102,7 +102,7 @@ export default function AdminCategory() {
                       <textarea
                         value={newDescription}
                         onChange={(e) => setNewDescription(e.target.value)}
-                        className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-black"
                         placeholder="Enter Description"
                         rows={3}
                       />
@@ -147,7 +147,7 @@ export default function AdminCategory() {
                         <DialogTrigger asChild>
                           <button
                             onClick={() => handleEditClick(index)}
-                            className="hover:text-blue-600"
+                            className="hover:text-black"
                           >
                             <MdModeEditOutline />
                           </button>
@@ -163,7 +163,7 @@ export default function AdminCategory() {
                                     type="text"
                                     value={editName}
                                     onChange={(e) => setEditName(e.target.value)}
-                                    className="w-full h-10 px-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                    className="w-full h-10 px-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-black"
                                     placeholder="Enter Window Option"
                                     required
                                   />
@@ -173,7 +173,7 @@ export default function AdminCategory() {
                                   <textarea
                                     value={editDescription}
                                     onChange={(e) => setEditDescription(e.target.value)}
-                                    className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                    className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-black"
                                     placeholder="Enter Description"
                                     rows={3}
                                   />
@@ -181,7 +181,7 @@ export default function AdminCategory() {
                                 <div className="pt-4">
                                   <button
                                     type="submit"
-                                    className="w-full bg-gray-100 hover:bg-gray-200 text-black font-semibold py-2 rounded-md transition-colors"
+                                    className="w-full bg-black hover:bg-gray-500 text-white font-semibold py-2 rounded-md transition-colors"
                                   >
                                     Submit
                                   </button>
