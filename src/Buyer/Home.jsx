@@ -41,10 +41,10 @@ const Home = () => {
   ];
 
   const chaptersData = [
-    { time: 0, title: "Craftsmanship", duration: "0:15", thumbnail: "https://example.com/thumb1.jpg" },
-    { time: 15, title: "Material Quality", duration: "0:22", thumbnail: "https://example.com/thumb2.jpg" },
-    { time: 37, title: "Energy Efficiency", duration: "0:18", thumbnail: "https://example.com/thumb3.jpg" },
-    { time: 55, title: "Installation", duration: "0:25", thumbnail: "https://example.com/thumb4.jpg" },
+    { time: 0, title: "Craftsmanship", duration: "0:00", thumbnail: "https://example.com/thumb1.jpg" },
+    { time: 15, title: "Material Quality", duration: "0:15", thumbnail: "https://example.com/thumb2.jpg" },
+    { time: 18, title: "Energy Efficiency", duration: "0:18", thumbnail: "https://example.com/thumb3.jpg" },
+    { time: 21, title: "Installation", duration: "0:22", thumbnail: "https://example.com/thumb4.jpg" },
   ];
 
   const handleChapterClick = (time, index) => {

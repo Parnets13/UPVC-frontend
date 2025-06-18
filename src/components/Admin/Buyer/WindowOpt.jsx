@@ -18,19 +18,25 @@ export default function WindowOpt() {
   const [editIndex, setEditIndex] = useState(null);
   const [editValue, setEditValue] = useState("");
   const [newOption, setNewOption] = useState("");
+  const [isAddModalOpen, setIsAddModalOpen] = useState(false);
+  const [isEditModalOpen, setIsEditModalOpen] = useState(false);
 
   const handleEditClick = (index) => {
     setEditIndex(index);
     setEditValue(windowOptions[index]);
+    setIsEditModalOpen(true);
   };
 
   const handleEditSubmit = (e) => {
     e.preventDefault();
-    const updatedOptions = [...windowOptions];
-    updatedOptions[editIndex] = editValue;
-    setWindowOptions(updatedOptions);
+    if (editValue.trim()) {
+      const updatedOptions = [...windowOptions];
+      updatedOptions[editIndex] = editValue.trim();
+      setWindowOptions(updatedOptions);
+    }
     setEditIndex(null);
     setEditValue("");
+    setIsEditModalOpen(false);
   };
 
   const handleDelete = (indexToDelete) => {
@@ -42,17 +48,18 @@ export default function WindowOpt() {
     e.preventDefault();
     if (newOption.trim()) {
       setWindowOptions([...windowOptions, newOption.trim()]);
-      setNewOption("");
     }
+    setNewOption("");
+    setIsAddModalOpen(false);
   };
 
   return (
-    <div className="bg-gray-50 min-h-screen p-4">
+    <div className=" min-h-screen p-4">
       <div className="border bg-white rounded-lg shadow-sm">
         {/* Header */}
         <div className="border-b flex justify-between items-center p-4">
           <h1 className="text-2xl font-semibold">Window & Door Option Management</h1>
-          <Dialog>
+          <Dialog open={isAddModalOpen} onOpenChange={setIsAddModalOpen}>
             <DialogTrigger asChild>
               <button
                 className="px-4 py-1 bg-black text-white rounded-md hover:bg-gray-900 transition-colors"
@@ -69,7 +76,7 @@ export default function WindowOpt() {
                 <DialogDescription>
                   <form className="space-y-4" onSubmit={handleAddSubmit}>
                     <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-1 label" style={{alignItems: "left"}}>
+                      <label className="block text-sm font-medium text-gray-700 mb-1">
                         Title
                       </label>
                       <input
@@ -78,6 +85,7 @@ export default function WindowOpt() {
                         onChange={(e) => setNewOption(e.target.value)}
                         className="w-full h-10 px-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-black"
                         placeholder="Enter Option"
+                        required
                       />
                     </div>
                     <div className="pt-4">
@@ -99,7 +107,7 @@ export default function WindowOpt() {
         <div className="p-4 overflow-x-auto">
           <table className="min-w-full border rounded-sm border-gray-200">
             <thead className="bg-gray-100 text-gray-700">
-              <tr className='border-b'>
+              <tr className="border-b">
                 <th className="text-left p-3">Sr. No</th>
                 <th className="text-left p-3">Option</th>
                 <th className="text-left p-3">Actions</th>
@@ -112,7 +120,7 @@ export default function WindowOpt() {
                   <td className="p-3">{item}</td>
                   <td className="p-3">
                     <div className="flex gap-3 text-lg text-gray-700">
-                      <Dialog>
+                      <Dialog open={isEditModalOpen} onOpenChange={setIsEditModalOpen}>
                         <DialogTrigger asChild>
                           <button
                             onClick={() => handleEditClick(index)}
@@ -138,14 +146,15 @@ export default function WindowOpt() {
                                     onChange={(e) => setEditValue(e.target.value)}
                                     className="w-full h-10 px-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-black"
                                     placeholder="Enter Window Option"
+                                    required
                                   />
                                 </div>
                                 <div className="pt-4">
                                   <button
                                     type="submit"
-                                    className="w-full bg-black hover:bg-black text-black font-semibold py-2 rounded-md transition-colors"
+                                    className="w-full bg-black text-white hover:bg-gray-900 font-semibold py-2 rounded-md transition-colors"
                                   >
-                                    Submit
+                                    Update
                                   </button>
                                 </div>
                               </form>
