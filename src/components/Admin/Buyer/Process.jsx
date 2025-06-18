@@ -98,7 +98,7 @@ export default function Process() {
                     <h1 className="text-2xl font-semibold">The Process</h1>
                 </div>
 
-                <div className="p-4 border-b">
+                {/* <div className="p-4 border-b">
                     <div className='flex justify-end mb-3'>
                         <Dialog>
                             <DialogTrigger asChild>
@@ -180,7 +180,7 @@ export default function Process() {
                             </tbody>
                         </table>
                     </div>
-                </div>
+                </div> */}
 
                 <div className='p-4'>
                     <div className='flex justify-end mb-3'>
