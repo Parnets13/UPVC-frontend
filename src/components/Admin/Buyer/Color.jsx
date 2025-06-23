@@ -208,7 +208,7 @@ export default function Color() {
                   Add
                 </button>
               </DialogTrigger>
-              <DialogContent className="max-w-lg bg-transparent rounded-lg shadow-lg">
+              <DialogContent className="max-w-lg bg-white rounded-lg shadow-lg">
                 <DialogHeader>
                   <DialogTitle className="text-lg font-bold mb-4">
                     {editingVideoId ? 'Edit Process Video' : 'Add Process Video'}

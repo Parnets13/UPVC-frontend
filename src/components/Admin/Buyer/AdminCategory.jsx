@@ -25,42 +25,54 @@ export default function AdminCategory() {
     }
   ]);
 
-  // For editing
-  const [editIndex, setEditIndex] = useState(null);
-  const [editName, setEditName] = useState("");
-  const [editDescription, setEditDescription] = useState("");
+  // Reusable form states
+  const [nameInput, setNameInput] = useState("");
+  const [descInput, setDescInput] = useState("");
+  const [mode, setMode] = useState("add"); // "add" or "edit"
+  const [dialogOpen, setDialogOpen] = useState(false);
+  const [currentIndex, setCurrentIndex] = useState(null); // index being edited
 
-  // For adding
-  const [newName, setNewName] = useState("");
-  const [newDescription, setNewDescription] = useState("");
-
-  const handleEditClick = (index) => {
-    setEditIndex(index);
-    setEditName(windowOptions[index].name);
-    setEditDescription(windowOptions[index].description);
+  const handleOpenAdd = () => {
+    setMode("add");
+    setNameInput("");
+    setDescInput("");
+    setDialogOpen(true);
   }
 
-  const handleEditSubmit = (e) => {
+  const handleOpenEdit = (index) => {
+    setMode("edit");
+    setCurrentIndex(index);
+    setNameInput(windowOptions[index].name);
+    setDescInput(windowOptions[index].description);
+    setDialogOpen(true);
+  }
+
+  const handleSubmit = (e) => {
     e.preventDefault();
-    if(editName.trim() === "") return alert("Name cannot be empty");
-    const updatedOptions = [...windowOptions];
-    updatedOptions[editIndex] = { name: editName.trim(), description: editDescription.trim() };
-    setWindowOptions(updatedOptions);
-    setEditIndex(null);
-    setEditName("");
-    setEditDescription("");
+    if (nameInput.trim() === "") return alert("Name is required");
+
+    if (mode === "add") {
+      setWindowOptions([
+        ...windowOptions,
+        { name: nameInput.trim(), description: descInput.trim() }
+      ]);
+    } else if (mode === "edit" && currentIndex !== null) {
+      const updated = [...windowOptions];
+      updated[currentIndex] = {
+        name: nameInput.trim(),
+        description: descInput.trim()
+      };
+      setWindowOptions(updated);
+    }
+
+    setDialogOpen(false);
+    setNameInput("");
+    setDescInput("");
+    setCurrentIndex(null);
   }
 
-  const handleDelete = (indexToDelete) => {
-    setWindowOptions(windowOptions.filter((_, i) => i !== indexToDelete));
-  }
-
-  const handleAddSubmit = (e) => {
-    e.preventDefault();
-    if(newName.trim() === "") return alert("Name cannot be empty");
-    setWindowOptions([...windowOptions, { name: newName.trim(), description: newDescription.trim() }]);
-    setNewName("");
-    setNewDescription("");
+  const handleDelete = (index) => {
+    setWindowOptions(windowOptions.filter((_, i) => i !== index));
   }
 
   return (
@@ -70,56 +82,12 @@ export default function AdminCategory() {
         {/* Header */}
         <div className="border-b flex justify-between items-center p-4">
           <h1 className="text-2xl font-semibold">Category Management</h1>
-
-          {/* Add Dialog */}
-          <Dialog>
-            <DialogTrigger asChild>
-              <button
-                className="px-4 py-1 bg-black text-white rounded-md hover:bg-gray-700 transition-colors"
-                aria-label="Add new window option"
-              >
-                Add
-              </button>
-            </DialogTrigger>
-            <DialogContent className="max-w-lg bg-white rounded-lg shadow-lg">
-              <DialogHeader>
-                <DialogTitle className="text-lg font-bold mb-4">Add Window Option</DialogTitle>
-                <DialogDescription>
-                  <form className="space-y-4" onSubmit={handleAddSubmit}>
-                    <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-1">Title</label>
-                      <input
-                        type="text"
-                        value={newName}
-                        onChange={(e) => setNewName(e.target.value)}
-                        className="w-full h-10 px-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-black"
-                        placeholder="Enter Category Name"
-                        required
-                      />
-                    </div>
-                    <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-1">Description</label>
-                      <textarea
-                        value={newDescription}
-                        onChange={(e) => setNewDescription(e.target.value)}
-                        className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-black"
-                        placeholder="Enter Description"
-                        rows={3}
-                      />
-                    </div>
-                    <div className="pt-4">
-                      <button
-                        type="submit"
-                        className="w-full bg-gray-100 hover:bg-gray-400 text-black font-semibold py-2 rounded-md transition-colors"
-                      >
-                        Submit
-                      </button>
-                    </div>
-                  </form>
-                </DialogDescription>
-              </DialogHeader>
-            </DialogContent>
-          </Dialog>
+          <button
+            onClick={handleOpenAdd}
+            className="px-4 py-1 bg-black text-white rounded-md hover:bg-gray-700 transition-colors"
+          >
+            Add
+          </button>
         </div>
 
         {/* Table */}
@@ -141,61 +109,12 @@ export default function AdminCategory() {
                   <td className="text-gray-600">{item.description}</td>
                   <td className="p-3">
                     <div className="flex gap-3 text-lg text-gray-700">
-
-                      {/* Edit Dialog */}
-                      <Dialog>
-                        <DialogTrigger asChild>
-                          <button
-                            onClick={() => handleEditClick(index)}
-                            className="hover:text-black"
-                          >
-                            <MdModeEditOutline />
-                          </button>
-                        </DialogTrigger>
-                        <DialogContent className="max-w-lg bg-white rounded-lg shadow-lg">
-                          <DialogHeader>
-                            <DialogTitle className="text-lg font-bold mb-4">Edit Option</DialogTitle>
-                            <DialogDescription>
-                              <form className="space-y-4" onSubmit={handleEditSubmit}>
-                                <div>
-                                  <label className="block text-sm font-medium text-gray-700 mb-1">Title</label>
-                                  <input
-                                    type="text"
-                                    value={editName}
-                                    onChange={(e) => setEditName(e.target.value)}
-                                    className="w-full h-10 px-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-black"
-                                    placeholder="Enter Window Option"
-                                    required
-                                  />
-                                </div>
-                                <div>
-                                  <label className="block text-sm font-medium text-gray-700 mb-1">Description</label>
-                                  <textarea
-                                    value={editDescription}
-                                    onChange={(e) => setEditDescription(e.target.value)}
-                                    className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-black"
-                                    placeholder="Enter Description"
-                                    rows={3}
-                                  />
-                                </div>
-                                <div className="pt-4">
-                                  <button
-                                    type="submit"
-                                    className="w-full bg-black hover:bg-gray-500 text-white font-semibold py-2 rounded-md transition-colors"
-                                  >
-                                    Submit
-                                  </button>
-                                </div>
-                              </form>
-                            </DialogDescription>
-                          </DialogHeader>
-                        </DialogContent>
-                      </Dialog>
-
+                      <button onClick={() => handleOpenEdit(index)} className="hover:text-black">
+                        <MdModeEditOutline />
+                      </button>
                       <button onClick={() => handleDelete(index)} className="hover:text-red-600">
                         <MdDelete />
                       </button>
-
                     </div>
                   </td>
                 </tr>
@@ -204,7 +123,55 @@ export default function AdminCategory() {
           </table>
         </div>
 
+        {/* Reusable Dialog */}
+        <Dialog open={dialogOpen} onOpenChange={setDialogOpen}>
+          <DialogContent className="max-w-lg bg-white rounded-lg shadow-lg">
+            <DialogHeader>
+              <DialogTitle className="text-lg font-bold mb-4">
+                {mode === "add" ? "Add Window Option" : "Edit Window Option"}
+              </DialogTitle>
+              <DialogDescription>
+                <form className="space-y-4" onSubmit={handleSubmit}>
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-1">Title</label>
+                    <input
+                      type="text"
+                      value={nameInput}
+                      onChange={(e) => setNameInput(e.target.value)}
+                      className="w-full h-10 px-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-black"
+                      placeholder="Enter Name"
+                      required
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-1">Description</label>
+                    <textarea
+                      value={descInput}
+                      onChange={(e) => setDescInput(e.target.value)}
+                      className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-black"
+                      placeholder="Enter Description"
+                      rows={3}
+                    />
+                  </div>
+                  <div className="pt-4">
+                    <button
+                      type="submit"
+                      className={`w-full ${
+                        mode === "add"
+                          ? "bg-gray-100 hover:bg-gray-400 text-black"
+                          : "bg-black hover:bg-gray-600 text-white"
+                      } font-semibold py-2 rounded-md transition-colors`}
+                    >
+                      Submit
+                    </button>
+                  </div>
+                </form>
+              </DialogDescription>
+            </DialogHeader>
+          </DialogContent>
+        </Dialog>
+
       </div>
     </div>
-  )
+  );
 }

@@ -12,7 +12,7 @@ export default function Feedback() {
       <div className="border bg-white rounded-lg ">
         <div className="border-b flex justify-between items-center p-4 ">
           <h1 className="text-2xl font-semibold text-gray-800">Feedback</h1>
-        </div>
+        </div>,,,
 
         <div className="overflow-x-auto p-4">
           <table className="min-w-full text-sm text-left text-gray-700 border border-gray-200 rounded">

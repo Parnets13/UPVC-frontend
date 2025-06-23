@@ -15,92 +15,60 @@ export default function WindowOpt() {
     "Fixed Windows", "Bathroom Ventilators", "Combination Windows", "Special Architectural Windows"
   ]);
 
+  const [modalMode, setModalMode] = useState(null); // 'add' or 'edit'
+  const [modalOpen, setModalOpen] = useState(false);
+
   const [editIndex, setEditIndex] = useState(null);
-  const [editValue, setEditValue] = useState("");
-  const [newOption, setNewOption] = useState("");
-  const [isAddModalOpen, setIsAddModalOpen] = useState(false);
-  const [isEditModalOpen, setIsEditModalOpen] = useState(false);
+  const [formValue, setFormValue] = useState("");
 
-  const handleEditClick = (index) => {
+  const openAddModal = () => {
+    setModalMode("add");
+    setFormValue("");
+    setModalOpen(true);
+  };
+
+  const openEditModal = (index) => {
+    setModalMode("edit");
     setEditIndex(index);
-    setEditValue(windowOptions[index]);
-    setIsEditModalOpen(true);
+    setFormValue(windowOptions[index]);
+    setModalOpen(true);
   };
 
-  const handleEditSubmit = (e) => {
+  const handleDelete = (index) => {
+    setWindowOptions(windowOptions.filter((_, i) => i !== index));
+  };
+
+  const handleSubmit = (e) => {
     e.preventDefault();
-    if (editValue.trim()) {
-      const updatedOptions = [...windowOptions];
-      updatedOptions[editIndex] = editValue.trim();
-      setWindowOptions(updatedOptions);
+    const trimmed = formValue.trim();
+    if (!trimmed) return;
+
+    if (modalMode === "add") {
+      setWindowOptions([...windowOptions, trimmed]);
+    } else if (modalMode === "edit") {
+      const updated = [...windowOptions];
+      updated[editIndex] = trimmed;
+      setWindowOptions(updated);
     }
+
+    setModalOpen(false);
+    setFormValue("");
     setEditIndex(null);
-    setEditValue("");
-    setIsEditModalOpen(false);
-  };
-
-  const handleDelete = (indexToDelete) => {
-    const updatedOptions = windowOptions.filter((_, i) => i !== indexToDelete);
-    setWindowOptions(updatedOptions);
-  };
-
-  const handleAddSubmit = (e) => {
-    e.preventDefault();
-    if (newOption.trim()) {
-      setWindowOptions([...windowOptions, newOption.trim()]);
-    }
-    setNewOption("");
-    setIsAddModalOpen(false);
+    setModalMode(null);
   };
 
   return (
-    <div className=" min-h-screen p-4">
+    <div className="min-h-screen p-4">
       <div className="border bg-white rounded-lg shadow-sm">
         {/* Header */}
         <div className="border-b flex justify-between items-center p-4">
           <h1 className="text-2xl font-semibold">Window & Door Option Management</h1>
-          <Dialog open={isAddModalOpen} onOpenChange={setIsAddModalOpen}>
-            <DialogTrigger asChild>
-              <button
-                className="px-4 py-1 bg-black text-white rounded-md hover:bg-gray-900 transition-colors"
-                aria-label="Add new window option"
-              >
-                Add
-              </button>
-            </DialogTrigger>
-            <DialogContent className="max-w-lg bg-white rounded-lg shadow-lg">
-              <DialogHeader>
-                <DialogTitle className="text-lg font-bold mb-4">
-                  Add Option
-                </DialogTitle>
-                <DialogDescription>
-                  <form className="space-y-4" onSubmit={handleAddSubmit}>
-                    <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-1">
-                        Title
-                      </label>
-                      <input
-                        type="text"
-                        value={newOption}
-                        onChange={(e) => setNewOption(e.target.value)}
-                        className="w-full h-10 px-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-black"
-                        placeholder="Enter Option"
-                        required
-                      />
-                    </div>
-                    <div className="pt-4">
-                      <button
-                        type="submit"
-                        className="w-full bg-gray-100 hover:bg-gray-400 text-black font-semibold py-2 rounded-md transition-colors"
-                      >
-                        Submit
-                      </button>
-                    </div>
-                  </form>
-                </DialogDescription>
-              </DialogHeader>
-            </DialogContent>
-          </Dialog>
+          <button
+            onClick={openAddModal}
+            className="px-4 py-1 bg-black text-white rounded-md hover:bg-gray-900 transition-colors"
+          >
+            Add
+          </button>
         </div>
 
         {/* Table */}
@@ -120,53 +88,10 @@ export default function WindowOpt() {
                   <td className="p-3">{item}</td>
                   <td className="p-3">
                     <div className="flex gap-3 text-lg text-gray-700">
-                      <Dialog open={isEditModalOpen} onOpenChange={setIsEditModalOpen}>
-                        <DialogTrigger asChild>
-                          <button
-                            onClick={() => handleEditClick(index)}
-                            className="hover:text-black"
-                          >
-                            <MdModeEditOutline />
-                          </button>
-                        </DialogTrigger>
-                        <DialogContent className="max-w-lg bg-white rounded-lg shadow-lg">
-                          <DialogHeader>
-                            <DialogTitle className="text-lg font-bold mb-4">
-                              Edit Option
-                            </DialogTitle>
-                            <DialogDescription>
-                              <form className="space-y-4" onSubmit={handleEditSubmit}>
-                                <div>
-                                  <label className="block text-sm font-medium text-gray-700 mb-1">
-                                    Title
-                                  </label>
-                                  <input
-                                    type="text"
-                                    value={editValue}
-                                    onChange={(e) => setEditValue(e.target.value)}
-                                    className="w-full h-10 px-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-black"
-                                    placeholder="Enter Window Option"
-                                    required
-                                  />
-                                </div>
-                                <div className="pt-4">
-                                  <button
-                                    type="submit"
-                                    className="w-full bg-black text-white hover:bg-gray-900 font-semibold py-2 rounded-md transition-colors"
-                                  >
-                                    Update
-                                  </button>
-                                </div>
-                              </form>
-                            </DialogDescription>
-                          </DialogHeader>
-                        </DialogContent>
-                      </Dialog>
-
-                      <button
-                        onClick={() => handleDelete(index)}
-                        className="hover:text-red-600"
-                      >
+                      <button onClick={() => openEditModal(index)} className="hover:text-black">
+                        <MdModeEditOutline />
+                      </button>
+                      <button onClick={() => handleDelete(index)} className="hover:text-red-600">
                         <MdDelete />
                       </button>
                     </div>
@@ -177,6 +102,40 @@ export default function WindowOpt() {
           </table>
         </div>
       </div>
+
+      {/* Shared Modal for Add/Edit */}
+      <Dialog open={modalOpen} onOpenChange={setModalOpen}>
+        <DialogContent className="max-w-lg bg-white rounded-lg shadow-lg">
+          <DialogHeader>
+            <DialogTitle className="text-lg font-bold mb-4">
+              {modalMode === "add" ? "Add Option" : "Edit Option"}
+            </DialogTitle>
+            <DialogDescription>
+              <form onSubmit={handleSubmit} className="space-y-4">
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">Title</label>
+                  <input
+                    type="text"
+                    value={formValue}
+                    onChange={(e) => setFormValue(e.target.value)}
+                    placeholder={modalMode === "add" ? "Enter Option Name" : "Update Option Name"}
+                    className="w-full h-10 px-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-black"
+                    required
+                  />
+                </div>
+                <div className="pt-4">
+                  <button
+                    type="submit"
+                    className="w-full bg-black text-white hover:bg-gray-900 font-semibold py-2 rounded-md transition-colors"
+                  >
+                    {modalMode === "add" ? "Submit" : "Update"}
+                  </button>
+                </div>
+              </form>
+            </DialogDescription>
+          </DialogHeader>
+        </DialogContent>
+      </Dialog>
     </div>
   );
 }
