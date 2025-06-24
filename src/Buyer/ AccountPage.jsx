@@ -1,12 +1,67 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { FaStar, FaPhone, FaEnvelope, FaMapMarkerAlt } from "react-icons/fa";
 import { FiEdit, FiLogOut } from "react-icons/fi";
 import { Link } from "react-router-dom";
 
 const AccountPage = () => {
   const [rating, setRating] = useState(0);
+  const navigate= useNavigate();
   const [hover, setHover] = useState(null);
   const [feedback, setFeedback] = useState("");
+  const [user, setUser] = useState({
+  name: '',
+  mobileNumber: ''
+});
+
+useEffect(() => {
+  const storedUser = JSON.parse(localStorage.getItem("buyerUser"));
+  if (storedUser) {
+    setUser(storedUser);
+  }
+}, []);
+const handleFeedbackSubmit = async () => {
+  if (!feedback || rating === 0) {
+    alert("Please provide a rating and feedback text.");
+    return;
+  }
+
+  try {
+    const response = await fetch("http://localhost:9000/api/feedback", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        name: user.name,
+        phone: user.mobileNumber,
+        text: feedback,
+        stars: rating,
+      }),
+    });
+
+    if (!response.ok) {
+      const err = await response.json();
+      throw new Error(err.error || "Failed to submit feedback");
+    }
+
+    alert("Feedback submitted successfully!");
+    setFeedback("");
+    setRating(0);
+  } catch (err) {
+    console.error("Error submitting feedback:", err);
+    alert("Error: " + err.message);
+  }
+};
+
+const handleLogout = () => {
+  localStorage.removeItem("buyerUser");
+  localStorage.removeItem("buyerToken");
+  // Optionally navigate to login page
+  navigate("/buyer-login");
+};
+
+
 
   return (
     <div className="max-w-6xl mx-auto p-4 font-sans mt-24">
@@ -18,20 +73,20 @@ const AccountPage = () => {
           <div className="bg-white p-5 rounded-xl shadow border">
             <div className="flex justify-between items-center mb-3">
               <h3 className="font-bold font-poppins text-sm">PROFILE INFORMATION</h3>
-              <FiEdit className="text-lg cursor-pointer" />
+              {/* <FiEdit className="text-lg cursor-pointer" /> */}
             </div>
 
             <div className="mb-4">
               <label className="text-xs font-inter text-gray-500">Full Name</label>
-              <div className="w-full p-2 bg-gray-100 rounded-md text-sm mt-1">
-                John Doe
-              </div>
+             <div className="w-full p-2 bg-gray-100 rounded-md text-sm mt-1">
+  {user.name || 'N/A'}
+</div>
             </div>
 
             <div>
               <label className="text-xs font-inter text-gray-500">Phone Number</label>
               <div className="w-full font-inter p-2 bg-gray-100 rounded-md text-sm mt-1">
-                +91 9876543210
+                 +91 {user.mobileNumber || 'N/A'}
               </div>
             </div>
           </div>
@@ -84,9 +139,13 @@ const AccountPage = () => {
               {feedback.length}/500 characters
             </div>
 
-            <button className="w-full mt-4 bg-black text-white py-2 rounded-md font-inter font-semibold">
-              SUBMIT FEEDBACK
-            </button>
+            <button
+  onClick={handleFeedbackSubmit}
+  className="w-full mt-4 bg-black text-white py-2 rounded-md font-inter font-semibold"
+>
+  SUBMIT FEEDBACK
+</button>
+
           </div>
         </div>
 
@@ -153,9 +212,13 @@ const AccountPage = () => {
           </div>
 
           {/* Logout Button */}
-          <button className="w-full border border-black py-2 rounded-lg font-bold font-poppins flex items-center justify-center gap-2">
-            LOGOUT <FiLogOut />
-          </button>
+          <button
+  onClick={handleLogout}
+  className="w-full border border-black py-2 rounded-lg font-bold font-poppins flex items-center justify-center gap-2"
+>
+  LOGOUT <FiLogOut />
+</button>
+
         </div>
       </div>
     </div>

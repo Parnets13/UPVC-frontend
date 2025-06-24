@@ -55,6 +55,7 @@ import Prices from './components/Admin/Buyer/Prices.jsx';
 import Color from './components/Admin/Buyer/Color.jsx';
 import Process from './components/Admin/Buyer/Process.jsx';
 import User from './components/Admin/Buyer/User.jsx';
+import Contacts from './components/Admin/Buyer/Contacts.jsx'
 import Feedback from './components/Admin/Buyer/Feedback.jsx';
 
 import Ad from './components/Admin/Seller/Ad.jsx';
@@ -144,6 +145,7 @@ export default function App() {
             <Route path='Color' element={<Color />} />
             <Route path='Process' element={<Process />} />
             <Route path='User' element={<User />} />
+            <Route path='Contacts' element={<Contacts/>}/>
             <Route path='Feedback' element={<Feedback />} />
 
 

@@ -7,15 +7,61 @@ const BuyerLogin = () => {
   const [name, setName] = useState('');
   const [phoneNumber, setPhoneNumber] = useState('');
   const [error, setError] = useState('');
+  const [loading, setLoading] = useState(false);
 
-  const handleSendOtp = () => {
-    if (!name.trim() || !/^[6-9]\d{9}$/.test(phoneNumber)) {
-      setError('Please enter a valid name and 10-digit mobile number');
-      return;
+const handleSendOtp = async () => {
+  setError('');
+
+  if (!name.trim() || !/^[6-9]\d{9}$/.test(phoneNumber)) {
+    setError('Please enter a valid name and 10-digit mobile number');
+    return;
+  }
+
+  setLoading(true);
+
+  try {
+    const response = await fetch('http://localhost:9000/api/auth/login', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        name,
+        mobileNumber: phoneNumber,
+      }),
+    });
+
+    const data = await response.json();
+
+    if (response.ok) {
+  console.log('OTP sent:', data.otp); // For dev/debug only
+
+  // ✅ Save user to localStorage if needed
+  if (data.user) {
+    localStorage.setItem("buyerUser", JSON.stringify(data.user));
+  }
+
+      // Navigate to OTP screen
+      navigate('/otp-verification', {
+        state: {
+          phoneNumber,
+          name,
+          token: data.token,
+        },
+      });
+    } else {
+      setError(data.message || 'Failed to send OTP');
     }
-    console.log('Sending OTP to:', phoneNumber);
-    navigate('/otp-verification', { state: { phoneNumber, name } });
-  };
+  } catch (err) {
+    console.error('Login error:', err);
+    setError('Server error. Please try again.');
+  } finally {
+    setLoading(false);
+  }
+};
+
+
+//localStorage.setItem("buyerUser", JSON.stringify(response.data.user));
 
   const handleSkip = () => {
     navigate('/home');
@@ -75,9 +121,10 @@ const BuyerLogin = () => {
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
             onClick={handleSendOtp}
-            className="w-full py-3 bg-black text-white font-semibold rounded-md hover:bg-gray-900 transition duration-300"
+            disabled={loading}
+            className="w-full py-3 bg-black text-white font-semibold rounded-md hover:bg-gray-900 transition duration-300 disabled:opacity-50"
           >
-            Send OTP
+            {loading ? 'Sending OTP...' : 'Send OTP'}
           </motion.button>
 
           <button

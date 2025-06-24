@@ -40,6 +40,7 @@ const Buy = [
   { title: "Color", url: "/admin/Color", icon: IoColorFillOutline },
   { title: "Process", url: "/admin/Process", icon: SiProcesswire },
   { title: "Buyer", url: "/admin/User", icon: FaRegUser },
+  { title: "Contact", url: "/admin/Contacts", icon: FaRegUser },
   { title: "Feedback", url: "/admin/Feedback", icon: VscFeedback },
 ];
 

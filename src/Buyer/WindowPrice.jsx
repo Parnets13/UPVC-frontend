@@ -130,9 +130,9 @@ const WindowPrice = () => {
               Your browser does not support the video tag.
             </video>
           </div>
-          <p className="text-center text-gray-500 text-sm mt-3">
+          {/* <p className="text-center text-gray-500 text-sm mt-3">
             {videoData?.description || 'Experience the craftsmanship of our premium uPVC windows'}
-          </p>
+          </p> */}
 
          
         </section>

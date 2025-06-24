@@ -5,24 +5,79 @@ import { motion } from 'framer-motion';
 const OTPVerification = () => {
   const location = useLocation();
   const navigate = useNavigate();
-  const [otp, setOtp] = useState(['', '', '', '', '', '']);
+
+  const [otp, setOtp] = useState(['', '', '', '']);
   const [error, setError] = useState('');
+  const [loading, setLoading] = useState(false);
 
   const phoneNumber = location.state?.phoneNumber || '';
-  const maskedPhone = phoneNumber 
+  const token = location.state?.token || '';
+
+  const maskedPhone = phoneNumber
     ? `${phoneNumber.slice(0, -3).replace(/\d/g, '*')}${phoneNumber.slice(-3)}`
     : '';
+const handleSubmit = async (e) => {
+  e.preventDefault();
+  const fullOtp = otp.join('');
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    const fullOtp = otp.join('');
-    if (fullOtp.length !== 6) {
-      setError('Please enter a 6-digit OTP');
-      return;
+  if (fullOtp.length !== 4) {
+    setError('Please enter a 4-digit OTP');
+    return;
+  }
+
+  setLoading(true);
+
+  try {
+    const response = await fetch('http://localhost:9000/api/auth/verify-otp', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        mobileNumber: phoneNumber,
+        otp: fullOtp,
+      }),
+    });
+
+    const data = await response.json();
+
+    if (response.ok && data.user && data.token) {
+      // Store user and token
+      localStorage.setItem("buyerUser", JSON.stringify(data.user));
+      localStorage.setItem("buyerToken", data.token);
+
+      // Add user to buyers array if not already present
+      const existingBuyers = JSON.parse(localStorage.getItem("buyers")) || [];
+      const isDuplicate = existingBuyers.some(
+        (b) => b.mobileNumber === data.user.mobileNumber
+      );
+
+      if (!isDuplicate) {
+        existingBuyers.push({
+          id: data.user._id,
+          name: data.user.name,
+          mobileNumber: data.user.mobileNumber,
+          token: data.token,
+        });
+
+        localStorage.setItem("buyers", JSON.stringify(existingBuyers));
+      }
+
+      // Store newly logged in buyer
+      localStorage.setItem("newBuyer", JSON.stringify(data.user));
+
+      navigate("/home");
+    } else {
+      setError(data.message || "Invalid or expired OTP");
     }
-    console.log('Verifying OTP:', fullOtp);
-    navigate('/home', { state: { phoneNumber } });
-  };
+  } catch (err) {
+    setError("Something went wrong. Please try again.");
+  } finally {
+    setLoading(false);
+  }
+};
+
+
 
   const handleOtpChange = (index, value) => {
     if (value && !/^\d+$/.test(value)) return;
@@ -32,18 +87,19 @@ const OTPVerification = () => {
     setOtp(newOtp);
     setError('');
 
-    if (value && index < 5) {
+    if (value && index < 3) {
       document.getElementById(`otp-${index + 1}`).focus();
     }
   };
 
   const handleResend = () => {
     console.log('Resending OTP to:', phoneNumber);
+    // You can implement actual resend OTP logic here.
   };
 
   return (
     <div className="min-h-screen bg-white flex items-center justify-center px-4">
-      <motion.div 
+      <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
@@ -52,22 +108,21 @@ const OTPVerification = () => {
         <div className="bg-black p-6 text-center rounded-t-xl">
           <h1 className="text-2xl font-bold text-white">OTP Verification</h1>
           <p className="text-gray-400 mt-2">
-            Enter the verification code we sent to your phone
+            Enter the 4-digit code we sent to your phone
           </p>
         </div>
 
         <div className="p-6 md:p-8">
           <div className="text-center mb-6">
             <p className="text-gray-800">
-              We've sent a 6-digit OTP to 
-              <span className="font-semibold"> +91 {maskedPhone}</span>
+              Sent to <span className="font-semibold">+91 {maskedPhone}</span>
             </p>
           </div>
 
           <form onSubmit={handleSubmit} className="space-y-6">
             <div>
               <label className="block text-gray-800 mb-3 text-center">
-                Enter your OTP code:
+                Enter OTP:
               </label>
               <div className="flex justify-center space-x-2">
                 {otp.map((digit, index) => (
@@ -85,23 +140,26 @@ const OTPVerification = () => {
                   />
                 ))}
               </div>
-              {error && <p className="mt-2 text-red-500 text-sm text-center">{error}</p>}
+              {error && (
+                <p className="mt-2 text-red-500 text-sm text-center">{error}</p>
+              )}
             </div>
 
             <motion.button
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
               type="submit"
-              className="w-full py-3 bg-black text-white font-semibold rounded-md hover:bg-gray-900 transition duration-300"
+              disabled={loading}
+              className="w-full py-3 bg-black text-white font-semibold rounded-md hover:bg-gray-900 transition duration-300 disabled:opacity-50"
             >
-              Verify & Submit
+              {loading ? 'Verifying...' : 'Verify & Submit'}
             </motion.button>
           </form>
 
           <div className="mt-6 text-center">
             <p className="text-gray-700 text-sm">
               Didn't receive the code?{' '}
-              <button 
+              <button
                 onClick={handleResend}
                 className="text-black font-medium hover:underline"
               >
